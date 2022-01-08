@@ -16,17 +16,17 @@ const Layout = ({
   const [openPanel, setOpenPanel] = useState(false);
   const [openSide, setOpenSide] = useState(false)
   return (
-    <div className={`flex flex-col items-center min-h-screen justify-between relative overflow-x-hidden`}>
+    <div className={`flex flex-col items-center min-h-screen justify-between relative overflow-x-hidden text-app-black-100`}>
       <Helmet>
         <title>{title}</title>
       </Helmet>
       {page === "home" && <Header openLang={openLang} openPanel={setOpenPanel} openSide ={openSide} setOpenSlide  ={()=>setOpenSide(true)}/>}
       <main className="flex-1 w-full ">
-        <div className={`fixed top-0 h-screen w-screen bg-app-transparent ${!openSide&&"hidden"}`}></div>
+        <div className={`fixed top-0 h-screen w-screen bg-app-transparent z-10 ${!openSide&&"hidden"}`}></div>
       <Sidebar open={openSide} setOpen={setOpenSide} openLang = {openLang} />
         {children}
       </main>
-      <Footer />
+      {page === "home" && <Footer />}
     </div>
   );
 };

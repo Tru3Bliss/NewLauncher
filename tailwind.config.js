@@ -31,6 +31,7 @@ module.exports = {
       app: {
         primary:{
           DEFAULT:"#500673",
+          50: "#7433930d",
           100: "#743393",
         },
         yellow: {
@@ -49,6 +50,9 @@ module.exports = {
           300: '#D1D4DB',
           400: '#E6E7EB',
           600: '#6B7380'
+        },
+        black:{
+          100: '#111828'
         },
         transparent: {
           DEFAULT:"#00000080"
@@ -126,6 +130,7 @@ module.exports = {
     },
     maxWidth: {
       0: "0px",
+      5: "10.5rem",
       60: "15rem",
       80: "20rem",
       90: "25rem",
