@@ -5,14 +5,14 @@ import downIcon from '../../assets/icons/ic_down.svg';
 
 const Accordion = (props) => {
   const [expand, setExpand] = useState(false)
-  const { children, summary }
+  const { children, summary, className, subClassname } = props
   return (
-    <div className=''>
-      <div className='flex justify-between' onClick={()=>{setExpand(!expand)}}>
-        <div>{summary}</div>
-        <img src={expand?upIcon:downIcon} alt='expand'/>
+    <div className={`${className} px-4 items-center`}>
+      <div className={`flex justify-between items-center ${subClassname}`} onClick={()=>{setExpand(!expand)}}>
+        <div className='w-10/12'>{summary}</div>
+        <img src={downIcon} alt='expand' className={`transform ${expand?"rotate-180":"rotate-0"} duration-300 flex-shrink-0`}/>
       </div>
-      <Expand open={this.state.open}>
+      <Expand open={expand}>
         {children}
       </Expand>
     </div>
