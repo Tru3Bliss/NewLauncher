@@ -13,7 +13,7 @@ export const SearchInput = (props) => {
 }
 
 export const CheckBox = (props) => {
-  const { checked, onChange, label, id } = props
+  const { checked, onChange, label, option } = props
   const [check, setChecked] = useState(checked)
   const handleCheck = () => {
     setChecked(!check)
@@ -22,7 +22,7 @@ export const CheckBox = (props) => {
     setChecked(checked)
   }, [checked])
   useEffect(() => {
-    onChange(id, check)
+    onChange(option, check)
   }, [check])
   return (
     <div className="flex gap-2 items-center cursor-pointer" onClick={handleCheck}>

@@ -18,10 +18,10 @@ export const BadgeButton = (props) => {
 }
 
 export const FilterBadge = (props) =>{
-  const { clear, children, className } = props
+  const { children, className, remove } = props
   const handleClear = (e) =>{
     e.stopPropagation();
-    clear()
+    remove()
   }
   return (
     <div className={`rounded-full h-7 px-2 border border-app-gray-400 text-black bg-white flex items-center gap-1 ${className}`}>

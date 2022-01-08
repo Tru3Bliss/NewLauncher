@@ -16,7 +16,9 @@ const FilterPage = () => {
   const handleBack = () => {
     navigate("/");
   }
-  console.log(filter.length)
+  const handleRemove = (item) => {
+    setFilter(filter.filter(e => e !== item))
+  }
   return (
     <Layout page="Filter">
       <div className='justify-between items-center flex h-16 px-4'>
@@ -26,14 +28,14 @@ const FilterPage = () => {
           </div>
           <span className='text-xl font-semibold'>Filter</span>
         </div>
-        <button className='capitalize text-sm text-app-primary-100 font-semibold'>clear all</button>
+        <button className='capitalize text-sm text-app-primary-100 font-semibold cursor-pointer' onClick={()=>{setFilter([])}}>clear all</button>
       </div>
       <div className='' style={{ height: "calc(100vh - 64px)" }}>
         <div className='flex flex-col divide-y divide-app-gray-100'>
           {filter.length !== 0 &&
             <Accordion summary={<div className=''><div className='flex items-center gap-2'><p className='text-base font-semibold'>Selected Filter</p><BadgeButton count={filter.length} clear={handleClear} className={filter.length === 0 && "hidden"} /></div></div>} className="" subClassname={filter.length > 0 ? "h-19" : "h-12.6"} >
               <div className='flex flex-wrap gap-1 pb-4'>
-                {filter.map((item, idx)=>(<FilterBadge key={idx}>{item}</FilterBadge>))}
+                {filter.map((item, idx)=>(<FilterBadge key={idx} remove={()=>handleRemove(item)}>{item.name}</FilterBadge>))}
               </div>
             </Accordion>}
           {
@@ -44,7 +46,7 @@ const FilterPage = () => {
         </div>
         <div className='px-4 py-3'>
           <StandardButton className="w-full h-12.5">
-            <p className='text-base font-semibold'>View {count} Launches</p>
+            <p className='text-base font-semibold'>View {parseInt(Math.random()*100)} Launches</p>
           </StandardButton>
         </div>
       </div>
