@@ -15,7 +15,7 @@ const Sidebar = (props) => {
   let navigate = useNavigate();
 
   return (
-    <div id="mySidenav" className={`sidebar fixed pt-16 -right-96 top-0 min-h-screen bg-white shadow-xl divide-y divide-app-gray-100 flex flex-col  duration-500  ${tiny?"w-screen":"w-96"} ${open?"-translate-x-full":''} z-20`}>
+    <div id="mySidenav" className={`sidebar fixed pt-16 -right-96 top-0 min-h-screen bg-white shadow-xl divide-y divide-app-gray-100 flex flex-col  duration-500  ${tiny?"w-screen":"w-96"} ${open?"-translate-x-full":''} z-50`}>
       <div className='px-4 h-16 flex justify-between w-full items-center fixed top-0 '>
         <img src={Logo} alt='logo' />
         <button className="text-app-gray-600" onClick={() => setOpen(false)}>

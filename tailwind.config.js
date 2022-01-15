@@ -162,7 +162,8 @@ module.exports = {
       max: "max-content",
     },
     minHeight: {
-      sm: "8.75rem"
+      sm: "8.75rem",
+      md: "13rem"
     }
   },
   variants: {

@@ -5,7 +5,7 @@ import Accordion from "../../components/accordion";
 const Footer = () => {
   return (
     <footer className="divide-y bg-white md:bg-app-primary-100 divide-app-gray-100 text-app-black-100 md:text-white justify-start flex flex-col w-full text-sm">
-      {/* <div className="flex flex-col md:hidden divide-y divide-app-gray-10">
+      <div className="flex flex-col md:hidden divide-y divide-app-gray-10">
         <Accordion summary={<div className="h-12.6 items-center flex font-semibold">About</div>} className="bg-app-primary-100" mode="white">
           <div className="flex flex-col gap-4 pb-4">
             <a href='#'>Our Company</a>
@@ -49,7 +49,7 @@ const Footer = () => {
             <a href='#'>Youtube</a>
           </div>
         </Accordion>
-      </div> */}
+      </div>
       <div className='w-full px-4 py-10 sm:p-10 md:p-20 grid grid-cols-1 md:grid-cols-2'>
         <div className='flex justify-between'>
           <div className='w-full md:w-1/2 gap-6 flex flex-col'>
