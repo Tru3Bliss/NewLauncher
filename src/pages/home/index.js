@@ -421,12 +421,12 @@ const HomePage = () => {
         <div>
           <H2>Developer Sales Volume</H2>
           <div className='text-app-black-80 mt-4'>Based on sales from Nov 19 to Nov 21</div>
-          <div className='w-full flex justify-between items-center'>
-            <Switch select={chatSelect} setSelect={setChatSelect} first="Property Type" second="Market Segment" className="mt-10" />
-            <div className='flex text-lg gap-2'>
+          <div className='w-full flex justify-between items-center mt-10'>
+            <Switch select={chatSelect} setSelect={setChatSelect} first="Property Type" second="Market Segment" className="" />
+            <div className='flex text-lg sm:gap-2 items-center'>
               <img src={chatSelect ? IcArrowUp : IcArrowDown} />
-              <p className={`${chatSelect ? "text-app-green-dark" : "text-app-red"} font-semibold`}>2.1%</p>
-              <p> vs last month</p>
+              <p className={`${chatSelect ? "text-app-green-dark" : "text-app-red"} text-sm sm:text-base font-semibold`}>2.1%</p>
+              <p className='text-xs sm:text-sm'>&nbsp; vs last month</p>
             </div>
           </div>
           <div className='mt-10 overflow-x-auto'>

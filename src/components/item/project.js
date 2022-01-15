@@ -4,6 +4,7 @@ import UnitItem from "./unit";
 import ImgIcon from '../../assets/icons/ic_img.svg';
 import WhatsappIcon from '../../assets/icons/ic_whatsapp.svg';
 import DummyImg from '../../assets/images/dummy.png';
+import { StatusBadge, UnitBadge } from "../badge";
 const ProjectItem = (props) => {
   const { project, className } = props
   const [loadstatus, setLoadStatus] = useState(0)
@@ -21,12 +22,17 @@ const ProjectItem = (props) => {
             <p>12</p>
           </div>
         </div>
-        <div className="flex flex-col justify-center px-4 gap-4 md:gap-1 py-2">
+        <div className="flex flex-col justify-center px-4 gap-2 py-3">
+          <div className="flex gap-1">
+            <StatusBadge>Upcoming Launch</StatusBadge>
+            <StatusBadge>From 22nd Dec 2022</StatusBadge>
+            <StatusBadge>Indicative Prices</StatusBadge>
+          </div>
           <div className="flex gap-2 items-center">
             <p className="text-xl font-semibold">{project.project_name}</p>
             <p className="text-app-black-80 text-sm">{project.project_address}</p>
           </div>
-          <div className="flex gap-4 text-app-black-60 text-sm">
+          <div className="flex gap-4 text-app-black-60 text-sm whitespace-nowrap truncate">
             <p>{project.marketsegment_name}</p>
             <p className="capitalize">{project.region_name === "central region" && project.subregion_name !== null ? project.subregion_name : project.region_name}</p>
             {project.subregion_name !== "null" && <p>{project.subregion_name}</p>}
@@ -47,6 +53,11 @@ const ProjectItem = (props) => {
             <p>{project.top}</p>
             <p>{project.tenure_name}</p>
           </div>
+          <div className="flex gap-1">
+            <UnitBadge>Total: 450 units</UnitBadge>
+            <UnitBadge>Available: 150 units</UnitBadge>
+            <UnitBadge>Sold: 300 units</UnitBadge>
+          </div>
         </div>
       </div>
       <div className="divide-y-2 divide-app-gray-30">
@@ -55,18 +66,19 @@ const ProjectItem = (props) => {
         ))}
       </div>
       <div className="flex justify-between h-17 items-center px-5 ">
-        <div className="flex gap-2 w-1/2">
+        <div className="flex gap-2 w-full">
           {devLoadStatus === 2 ? <img src={DummyImg} alt="developer" className="w-10 h-10 rounded-full" />
             : <img src={BASE_URL+project.dev_logo_path} alt="developer" className={`rounded-full w-10 h-10 ${devLoadStatus === 3 && "hidden"}`} onLoad={() => { if (devLoadStatus != 2) setDevLoadStatus(1) }} onError={() => setDevLoadStatus(2)} />}
           {/* <img src={project.dev_logo_path} alt="developer" className="rounded-full w-10 h-10"/> */}
-          <div className="flex flex-col gap-1 w-1/2">
+          <div className="flex flex-col gap-1 w-3/5">
             <p className="text-sm text-app-black-100 truncate">{project.developer_name}</p>
             <p className="text-app-black-60 text-xs whitespace-nowrap">+1 Developer</p>
           </div>
         </div>
         <div className="flex gap-2 flex-shrink-0">
-          <div className="text-center items-center justify-center flex text-sm font-semibold border rounded-md px-1 md:px-4">{project.phone_number}</div>
-          <a href={project.whatsapp_link} className="bg-app-primary-100 px-1 md:px-3 md:py-2 py-1 rounded-md">
+          <div className="text-center items-center justify-center text-sm font-semibold border rounded-md px-1 md:px-4 md:flex hidden">{project.phone_number}</div>
+          <div className="w-18 text-center items-center justify-center flex md:hidden text-sm font-semibold border rounded-md px-1 md:px-4 text-app-primary-100 border-app-primary-100">Call Sales</div>
+          <a href={project.whatsapp_link} className="bg-app-primary-100 px-1 md:px-3 md:py-2 py-1 rounded-md w-8 h-7 md:w-11 md:h-9 items-center flex justify-center">
             <img src={WhatsappIcon} alt="whatsapp" />
           </a>
         </div>

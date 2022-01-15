@@ -69,6 +69,7 @@ module.exports = {
           100: '#111828',
           80: '#384152',
           60: '#6B7380',
+          50: '#9CA2AE'
         },
         transparent: {
           DEFAULT: "#00000080"
@@ -104,6 +105,7 @@ module.exports = {
       15: "3.875rem",
       16: "4rem",
       17: '4.5rem',
+      18: "4.875rem",
       19: "77px",
       20: "5rem",
       21: "5.25rem",
@@ -164,6 +166,28 @@ module.exports = {
     minHeight: {
       sm: "8.75rem",
       md: "13rem"
+    },
+    fontSize: {
+      'xxs': '10px',
+      'xs': '12px',
+    },
+    screens: {
+      'tiny': "400px",
+
+      'sm': '640px',
+      // => @media (min-width: 640px) { ... }
+
+      'md': '768px',
+      // => @media (min-width: 768px) { ... }
+
+      'lg': '1024px',
+      // => @media (min-width: 1024px) { ... }
+
+      'xl': '1280px',
+      // => @media (min-width: 1280px) { ... }
+
+      '2xl': '1536px',
+      // => @media (min-width: 1536px) { ... }
     }
   },
   variants: {

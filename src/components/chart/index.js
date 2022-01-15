@@ -4,8 +4,6 @@ import ReactApexCharts from 'react-apexcharts'
 const SalesChart = (props) => {
   const {data, className} = props
 
-  console.log(data)
-
   let options = {
     chart: {
       type: 'bar',
