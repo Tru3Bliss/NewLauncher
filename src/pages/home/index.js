@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import * as am5 from "@amcharts/amcharts5";
-import * as am5xy from "@amcharts/amcharts5/xy";
-import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+// import * as am5 from "@amcharts/amcharts5";
+// import * as am5xy from "@amcharts/amcharts5/xy";
+// import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import { H1, H2, Title } from '../../components/label'
 import Layout from '../../layout/layout'
 import { filterOptions } from './options'
@@ -25,6 +25,8 @@ import Developer_3 from '../../assets/images/developer_3.png'
 import Launch_1 from '../../assets/images/launch_1.png'
 import Launch_2 from '../../assets/images/launch_2.png'
 import Launch_3 from '../../assets/images/launch_3.png'
+import IcArrowUp from '../../assets/icons/ic_arrow_up.svg'
+import IcArrowDown from '../../assets/icons/ic_arrow_down.svg'
 import TopOne from '../../components/item/topone'
 import SecondaryItem from '../../components/item/secondary'
 import axios from 'axios'
@@ -34,6 +36,8 @@ import LaunchTable from '../../components/table/launch_table'
 import Client from '../../components/item/client'
 import ClientItem from '../../components/item/client'
 import LaunchItem from '../../components/item/launch'
+import ApexChart from '../../components/chart';
+import Switch from '../../components/switch'
 
 const HomePage = () => {
 
@@ -41,6 +45,7 @@ const HomePage = () => {
   const [unitTypes, setUnitTypes] = useState(346)
   const [floorPlans, setFloorPlans] = useState(789)
   const [filter, setFilter] = useState([])
+  const [chatSelect, setChatSelect] = useState(false)
   const [expand, setExpand] = useState(false)
   const [topOne, setTopOne] = useState(
     {
@@ -146,8 +151,42 @@ const HomePage = () => {
       },
     ]
   )
-
   const [projects, setProjects] = useState([])
+
+  const [salesData, setSalesData] = useState([
+    [
+      {
+        name: 'Non Landed',
+        data: [44, 55, 41, 67, 22, 43, 13, 23, 20, 8, 13, 27, 13, 23, 20, 8],
+        color: "#DBAAE8"
+      },
+      {
+        name: 'Exec Condo',
+        data: [13, 23, 20, 8, 13, 27, 11, 17, 15, 15, 21, 14, 13, 23, 20, 8],
+        color: "#9255A2"
+      },
+      {
+        name: 'Landed',
+        data: [11, 17, 15, 15, 21, 14, 44, 55, 41, 67, 22, 43, 13, 23, 20, 8],
+        color: "#5A1879"
+      }],
+    [
+      {
+        name: 'Non Landed',
+        data: [11, 17, 15, 15, 21, 14, 44, 55, 41, 67, 22, 43, 13, 23, 20, 8],
+        color: "#DBAAE8"
+      },
+      {
+        name: 'Exec Condo',
+        data: [13, 23, 20, 8, 13, 27, 11, 17, 15, 15, 21, 14, 13, 23, 20, 8],
+        color: "#9255A2"
+      },
+      {
+        name: 'Landed',
+        data: [44, 55, 41, 67, 22, 43, 13, 23, 20, 8, 13, 27, 13, 23, 20, 8],
+        color: "#5A1879"
+      }]
+  ])
 
   async function getData() {
     const res = await axios('/data');
@@ -171,82 +210,139 @@ const HomePage = () => {
       console.log(response.data)
     })
 
-    let root = am5.Root.new("chartdiv");
+    //   let root = am5.Root.new("chartdiv");
 
-    root.setThemes([
-      am5themes_Animated.new(root)
-    ]);
+    //   const myTheme = am5.Theme.new(root);
 
-    let chart = root.container.children.push(
-      am5xy.XYChart.new(root, {
-        panY: false,
-        layout: root.verticalLayout
-      })
-    );
+    //   myTheme.rule("Series").setAll({
+    //     fill: [
+    //       am5.color("#845EC2"),
+    //       am5.color("#D65DB1"),
+    //       am5.color("#FF6F91"),
+    //       am5.color("#FF9671"),
+    //       am5.color("#FFC75F"),
+    //       am5.color("#F9F871")
+    //     ],
+    //     fontSize: "1.5em"
+    //   });
+    //   root.setThemes([
+    //     am5themes_Animated.new(root), myTheme
+    //   ]);
 
-    // Define data
-    let data = [{
-      category: "Research",
-      value1: 1000,
-      value2: 588
-    }, {
-      category: "Marketing",
-      value1: 1200,
-      value2: 1800
-    }, {
-      category: "Sales",
-      value1: 850,
-      value2: 1230
-    }];
+    //   let chart = root.container.children.push(
+    //     am5xy.XYChart.new(root, {
+    //       panY: false,
+    //       layout: root.verticalLayout
+    //     })
+    //   );
 
-    // Create Y-axis
-    let yAxis = chart.yAxes.push(
-      am5xy.ValueAxis.new(root, {
-        renderer: am5xy.AxisRendererY.new(root, {})
-      })
-    );
+    //   // Define data
+    //   let data = [{
+    //     category: "Nov 19",
+    //     value1: 1000,
+    //     value2: 588
+    //   }, {
+    //     category: "Dec 19",
+    //     value1: 1200,
+    //     value2: 1800
+    //   }, {
+    //     category: "Jan 20",
+    //     value1: 850,
+    //     value2: 1230
+    //   },
+    //   {
+    //     category: "Fab 20",
+    //     value1: 850,
+    //     value2: 1230
+    //   },
+    //   {
+    //     category: "Mar 20",
+    //     value1: 850,
+    //     value2: 1230
+    //   },
+    //   {
+    //     category: "Apr 20",
+    //     value1: 850,
+    //     value2: 1230
+    //   },
+    //   {
+    //     category: "May 20",
+    //     value1: 850,
+    //     value2: 1230
+    //   },
+    //   {
+    //     category: "Jun 20",
+    //     value1: 850,
+    //     value2: 1230
+    //   },
 
-    // Create X-Axis
-    let xAxis = chart.xAxes.push(
-      am5xy.CategoryAxis.new(root, {
-        renderer: am5xy.AxisRendererX.new(root, {}),
-        categoryField: "category"
-      })
-    );
-    xAxis.data.setAll(data);
+    //   {
+    //     category: "Jul 20",
+    //     value1: 850,
+    //     value2: 1230
+    //   },
+    //   {
+    //     category: "Aug 20",
+    //     value1: 850,
+    //     value2: 1230
+    //   },
+    //   {
+    //     category: "Sep 20",
+    //     value1: 850,
+    //     value2: 1230
+    //   },
+    // ];
 
-    // Create series
-    let series1 = chart.series.push(
-      am5xy.ColumnSeries.new(root, {
-        name: "Series",
-        xAxis: xAxis,
-        yAxis: yAxis,
-        valueYField: "value1",
-        categoryXField: "category"
-      })
-    );
-    series1.data.setAll(data);
+    //   // Create Y-axis
+    //   let yAxis = chart.yAxes.push(
+    //     am5xy.ValueAxis.new(root, {
+    //       renderer: am5xy.AxisRendererY.new(root, {})
+    //     })
+    //   );
 
-    // let series2 = chart.series.push(
-    //   am5xy.ColumnSeries.new(root, {
-    //     name: "Series",
-    //     xAxis: xAxis,
-    //     yAxis: yAxis,
-    //     valueYField: "value2",
-    //     categoryXField: "category"
-    //   })
-    // );
-    // series2.data.setAll(data);
+    //   // Create X-Axis
+    //   let xAxis = chart.xAxes.push(
+    //     am5xy.CategoryAxis.new(root, {
+    //       renderer: am5xy.AxisRendererX.new(root, {}),
+    //       categoryField: "category"
+    //     })
+    //   );
+    //   xAxis.data.setAll(data);
 
-    // Add legend
-    let legend = chart.children.push(am5.Legend.new(root, {}));
-    legend.data.setAll(chart.series.values);
+    //   // Create series
+    //   let series1 = chart.series.push(
+    //     am5xy.ColumnSeries.new(root, {
+    //       name: "Series",
+    //       xAxis: xAxis,
+    //       yAxis: yAxis,
+    //       valueYField: "value1",
+    //       categoryXField: "category"
+    //     })
+    //   );
+    //   series1.data.setAll(data);
 
-    // Add cursor
-    chart.set("cursor", am5xy.XYCursor.new(root, {}));
+    //   let series2 = chart.series.push(
+    //     am5xy.ColumnSeries.new(root, {
+    //       name: "Series2",
+    //       xAxis: xAxis,
+    //       yAxis: yAxis,
+    //       valueYField: "value2",
+    //       categoryXField: "category"
+    //     })
+    //   );
+    //   series2.data.setAll(data);
+
+    //   // Add legend
+    //   let legend = chart.children.push(am5.Legend.new(root, {}));
+    //   legend.data.setAll(chart.series.values);
+
+    //   // Add cursor
+    //   chart.set("cursor", am5xy.XYCursor.new(root, {}));
 
     // this.root = root;
+
   }, [])
+
 
   return (
     <Layout>
@@ -354,9 +450,18 @@ const HomePage = () => {
         <div>
           <H2>Developer Sales Volume</H2>
           <div className='text-app-black-80 mt-4'>Based on sales from Nov 19 to Nov 21</div>
-          <div className='mt-10 overflow-x-auto'>
-            <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
+          <div className='w-full flex justify-between items-center'>
+            <Switch select={chatSelect} setSelect={setChatSelect} first="Property Type" second="Market Segment" className="mt-10" />
+            <div className='flex text-lg gap-2'>
+              <img src={chatSelect?IcArrowUp:IcArrowDown} />
+              <p className={`${chatSelect?"text-app-green-dark":"text-app-red"} font-semibold`}>2.1%</p>
+              <p> vs last month</p>
+            </div>
           </div>
+          <div className='mt-10 overflow-x-auto'>
+            <ApexChart data={chatSelect?salesData[0]:salesData[1]}/>
+          </div>
+          <p className='text-app-black-60 text-sm mt-9'>Source: Urban Redevelopment Authority (URA)</p>
         </div>
 
         <div>
