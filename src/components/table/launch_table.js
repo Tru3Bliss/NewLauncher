@@ -1,7 +1,7 @@
 import React from "react";
 
 const LaunchTable = (props) => {
-  const { launches, className } = props
+  const { data, className } = props
 
   return (
     <table className="text-app-black-100 w-full min-w-120 ">
@@ -19,7 +19,19 @@ const LaunchTable = (props) => {
         </tr>
       </thead>
       <tbody>
-        <tr></tr>
+        {data.map((item, idx) => (
+          <tr key={idx} className="text-center text-sm font-semibold text-app-black-100">
+            <td  className="text-left p-3">{item.name}</td>
+            <td>{item.type}</td>
+            <td>{item.segment}</td>
+            <td>{item.units}</td>
+            <td>{item.total_sales}</td>
+            <td>{item.current_sales}</td>
+            <td>{item.low_psf}</td>
+            <td>{item.medium_psf}</td>
+            <td className="text-right p-3">{item.high_psf}</td>
+          </tr>
+        ))}
       </tbody>
     </table>
   )

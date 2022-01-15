@@ -188,6 +188,108 @@ const HomePage = () => {
       }]
   ])
 
+  const [newLaunchData, setNewLaunchData] = useState([
+    {
+      name: "Sengkang Grand Residence",
+      type: "Apartment",
+      segment: "Outside Central",
+      units: "680",
+      total_sales: "680",
+      current_sales: "680",
+      low_psf: "$680",
+      medium_psf: "$680",
+      high_psf: "$680",
+    },
+    {
+      name: "Sengkang Grand Residence",
+      type: "Apartment",
+      segment: "Outside Central",
+      units: "680",
+      total_sales: "680",
+      current_sales: "680",
+      low_psf: "$680",
+      medium_psf: "$680",
+      high_psf: "$680",
+    },
+    {
+      name: "Sengkang Grand Residence",
+      type: "Apartment",
+      segment: "Outside Central",
+      units: "680",
+      total_sales: "680",
+      current_sales: "680",
+      low_psf: "$680",
+      medium_psf: "$680",
+      high_psf: "$680",
+    },
+    {
+      name: "Sengkang Grand Residence",
+      type: "Apartment",
+      segment: "Outside Central",
+      units: "680",
+      total_sales: "680",
+      current_sales: "680",
+      low_psf: "$680",
+      medium_psf: "$680",
+      high_psf: "$680",
+    },
+    {
+      name: "Sengkang Grand Residence",
+      type: "Apartment",
+      segment: "Outside Central",
+      units: "680",
+      total_sales: "680",
+      current_sales: "680",
+      low_psf: "$680",
+      medium_psf: "$680",
+      high_psf: "$680",
+    },
+    {
+      name: "Sengkang Grand Residence",
+      type: "Apartment",
+      segment: "Outside Central",
+      units: "680",
+      total_sales: "680",
+      current_sales: "680",
+      low_psf: "$680",
+      medium_psf: "$680",
+      high_psf: "$680",
+    },
+    {
+      name: "Sengkang Grand Residence",
+      type: "Apartment",
+      segment: "Outside Central",
+      units: "680",
+      total_sales: "680",
+      current_sales: "680",
+      low_psf: "$680",
+      medium_psf: "$680",
+      high_psf: "$680",
+    },
+    {
+      name: "Sengkang Grand Residence",
+      type: "Apartment",
+      segment: "Outside Central",
+      units: "680",
+      total_sales: "680",
+      current_sales: "680",
+      low_psf: "$680",
+      medium_psf: "$680",
+      high_psf: "$680",
+    },
+    {
+      name: "Sengkang Grand Residence",
+      type: "Apartment",
+      segment: "Outside Central",
+      units: "680",
+      total_sales: "680",
+      current_sales: "680",
+      low_psf: "$680",
+      medium_psf: "$680",
+      high_psf: "$680",
+    },
+  ])
+
   async function getData() {
     const res = await axios('/data');
     return await res.json(); // (Or whatever)
@@ -209,138 +311,6 @@ const HomePage = () => {
     axios.post(BASE_API_URL + "listings").then((response) => setProjects(response.data)).catch((response) => {
       console.log(response.data)
     })
-
-    //   let root = am5.Root.new("chartdiv");
-
-    //   const myTheme = am5.Theme.new(root);
-
-    //   myTheme.rule("Series").setAll({
-    //     fill: [
-    //       am5.color("#845EC2"),
-    //       am5.color("#D65DB1"),
-    //       am5.color("#FF6F91"),
-    //       am5.color("#FF9671"),
-    //       am5.color("#FFC75F"),
-    //       am5.color("#F9F871")
-    //     ],
-    //     fontSize: "1.5em"
-    //   });
-    //   root.setThemes([
-    //     am5themes_Animated.new(root), myTheme
-    //   ]);
-
-    //   let chart = root.container.children.push(
-    //     am5xy.XYChart.new(root, {
-    //       panY: false,
-    //       layout: root.verticalLayout
-    //     })
-    //   );
-
-    //   // Define data
-    //   let data = [{
-    //     category: "Nov 19",
-    //     value1: 1000,
-    //     value2: 588
-    //   }, {
-    //     category: "Dec 19",
-    //     value1: 1200,
-    //     value2: 1800
-    //   }, {
-    //     category: "Jan 20",
-    //     value1: 850,
-    //     value2: 1230
-    //   },
-    //   {
-    //     category: "Fab 20",
-    //     value1: 850,
-    //     value2: 1230
-    //   },
-    //   {
-    //     category: "Mar 20",
-    //     value1: 850,
-    //     value2: 1230
-    //   },
-    //   {
-    //     category: "Apr 20",
-    //     value1: 850,
-    //     value2: 1230
-    //   },
-    //   {
-    //     category: "May 20",
-    //     value1: 850,
-    //     value2: 1230
-    //   },
-    //   {
-    //     category: "Jun 20",
-    //     value1: 850,
-    //     value2: 1230
-    //   },
-
-    //   {
-    //     category: "Jul 20",
-    //     value1: 850,
-    //     value2: 1230
-    //   },
-    //   {
-    //     category: "Aug 20",
-    //     value1: 850,
-    //     value2: 1230
-    //   },
-    //   {
-    //     category: "Sep 20",
-    //     value1: 850,
-    //     value2: 1230
-    //   },
-    // ];
-
-    //   // Create Y-axis
-    //   let yAxis = chart.yAxes.push(
-    //     am5xy.ValueAxis.new(root, {
-    //       renderer: am5xy.AxisRendererY.new(root, {})
-    //     })
-    //   );
-
-    //   // Create X-Axis
-    //   let xAxis = chart.xAxes.push(
-    //     am5xy.CategoryAxis.new(root, {
-    //       renderer: am5xy.AxisRendererX.new(root, {}),
-    //       categoryField: "category"
-    //     })
-    //   );
-    //   xAxis.data.setAll(data);
-
-    //   // Create series
-    //   let series1 = chart.series.push(
-    //     am5xy.ColumnSeries.new(root, {
-    //       name: "Series",
-    //       xAxis: xAxis,
-    //       yAxis: yAxis,
-    //       valueYField: "value1",
-    //       categoryXField: "category"
-    //     })
-    //   );
-    //   series1.data.setAll(data);
-
-    //   let series2 = chart.series.push(
-    //     am5xy.ColumnSeries.new(root, {
-    //       name: "Series2",
-    //       xAxis: xAxis,
-    //       yAxis: yAxis,
-    //       valueYField: "value2",
-    //       categoryXField: "category"
-    //     })
-    //   );
-    //   series2.data.setAll(data);
-
-    //   // Add legend
-    //   let legend = chart.children.push(am5.Legend.new(root, {}));
-    //   legend.data.setAll(chart.series.values);
-
-    //   // Add cursor
-    //   chart.set("cursor", am5xy.XYCursor.new(root, {}));
-
-    // this.root = root;
-
   }, [])
 
 
@@ -443,8 +413,9 @@ const HomePage = () => {
           <H2>Trending New Launches</H2>
           <div className='text-app-black-80 mt-4'>Based on units sold in Nov 21</div>
           <div className='mt-10 overflow-x-auto'>
-            <LaunchTable />
+            <LaunchTable data={newLaunchData} />
           </div>
+          <p className='text-app-black-60 text-sm mt-9'>Source: Urban Redevelopment Authority (URA)</p>
         </div>
 
         <div>
@@ -453,21 +424,15 @@ const HomePage = () => {
           <div className='w-full flex justify-between items-center'>
             <Switch select={chatSelect} setSelect={setChatSelect} first="Property Type" second="Market Segment" className="mt-10" />
             <div className='flex text-lg gap-2'>
-              <img src={chatSelect?IcArrowUp:IcArrowDown} />
-              <p className={`${chatSelect?"text-app-green-dark":"text-app-red"} font-semibold`}>2.1%</p>
+              <img src={chatSelect ? IcArrowUp : IcArrowDown} />
+              <p className={`${chatSelect ? "text-app-green-dark" : "text-app-red"} font-semibold`}>2.1%</p>
               <p> vs last month</p>
             </div>
           </div>
           <div className='mt-10 overflow-x-auto'>
-            <ApexChart data={chatSelect?salesData[0]:salesData[1]}/>
+            <ApexChart data={chatSelect ? salesData[0] : salesData[1]} />
           </div>
           <p className='text-app-black-60 text-sm mt-9'>Source: Urban Redevelopment Authority (URA)</p>
-        </div>
-
-        <div>
-
-          <div className='mt-10 overflow-x-auto'>
-          </div>
         </div>
 
         <div>
