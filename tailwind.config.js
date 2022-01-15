@@ -29,33 +29,49 @@ module.exports = {
       yellow: colors.amber,
       blue: colors.blue,
       app: {
-        primary:{
-          DEFAULT:"#500673",
+        blue: {
+          DEFAULT: "#133AC5"
+        },
+        primary: {
+          DEFAULT: "#500673",
           50: "#7433930d",
+          60: '#DBAAE826',
           100: "#743393",
+          light: '#9255A2'
         },
         yellow: {
           100: '#FCD94A',
           200: '#fcd535',
+          700: '#BD9205',
           DEFAULT: '#F0B90B',
           dark: '#C99400',
           light: '#FEF6D8',
         },
+        red: {
+          DEFAULT: '#DF1111',
+
+        },
         green: {
-          DEFAULT: '#0ECB81'
+          DEFAULT: '#0ECB81',
+          dark: '#038A41'
         },
         gray: {
-          100: '#F3F4F6',
+          10: '#ffffff30',
+          20: '#F3F4F6',
+          30: "#E6E7EB",
+          60: '#6B7380',
           200: '#9CA2AE',
           300: '#D1D4DB',
           400: '#E6E7EB',
           600: '#6B7380'
         },
-        black:{
-          100: '#111828'
+        black: {
+          100: '#111828',
+          80: '#384152',
+          60: '#6B7380',
         },
         transparent: {
-          DEFAULT:"#00000080"
+          DEFAULT: "#00000080"
         }
       },
     },
@@ -85,9 +101,12 @@ module.exports = {
       12.6: "3.25rem",
       13: "3.375rem",
       14: "3.5rem",
+      15: "3.875rem",
       16: "4rem",
+      17: '4.5rem',
       19: "77px",
       20: "5rem",
+      21: "5.25rem",
       24: "6rem",
       25: "6.5rem",
       28: "7rem",
@@ -95,6 +114,7 @@ module.exports = {
       32: "8rem",
       36: "9rem",
       40: "10rem",
+      43: "10.875rem",
       44: "11rem",
       45: '11.25rem',
       48: "12rem",
@@ -112,7 +132,7 @@ module.exports = {
       99: "44rem",
       100: "48rem",
       110: "60rem",
-      115 : "75rem",
+      115: "75rem",
       120: "84rem",
       400: '400px',
 
@@ -135,12 +155,15 @@ module.exports = {
       80: "20rem",
       90: "25rem",
       100: "48rem",
-      115 : "75rem",
+      115: "75rem",
       120: "64rem",
       full: "100%",
       min: "min-content",
       max: "max-content",
     },
+    minHeight: {
+      sm: "8.75rem"
+    }
   },
   variants: {
     extend: {},

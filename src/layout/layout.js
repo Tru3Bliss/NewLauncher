@@ -20,13 +20,13 @@ const Layout = ({
       <Helmet>
         <title>{title}</title>
       </Helmet>
-      {page === "home" && <Header openLang={openLang} openPanel={setOpenPanel} openSide ={openSide} setOpenSlide  ={()=>setOpenSide(true)}/>}
-      <main className="flex-1 w-full ">
-        <div className={`fixed top-0 h-screen w-screen bg-app-transparent z-10 ${!openSide&&"hidden"}`}></div>
-      <Sidebar open={openSide} setOpen={setOpenSide} openLang = {openLang} />
+      {page === "home" && <Header openLang={openLang} openPanel={setOpenPanel} openSide={openSide} setOpenSlide={() => setOpenSide(true)} />}
+      <main className="w-full flex-1 mt-16">
+        <div className={`fixed top-0 h-screen w-screen bg-app-transparent z-10 ${!openSide && "hidden"}`}></div>
+        <Sidebar open={openSide} setOpen={setOpenSide} openLang={openLang} />
         {children}
       </main>
-      {page === "home" && <Footer />}
+      <Footer />
     </div>
   );
 };
