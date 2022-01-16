@@ -41,9 +41,9 @@ import Switch from '../../components/switch'
 
 const HomePage = () => {
 
-  const [newLaunchers, setNetLaunchers] = useState(145)
-  const [unitTypes, setUnitTypes] = useState(346)
-  const [floorPlans, setFloorPlans] = useState(789)
+  const [newLaunchers, setNetLaunchers] = useState(0)
+  const [unitTypes, setUnitTypes] = useState(0)
+  const [floorPlans, setFloorPlans] = useState(0)
   const [filter, setFilter] = useState([])
   const [chatSelect, setChatSelect] = useState(false)
   const [expand, setExpand] = useState(false)
@@ -97,7 +97,7 @@ const HomePage = () => {
       },
     ]
   )
-  const [clients, setClients] = useState(
+  const [testimonials, setTestimonials] = useState(
     [
       {
         name: "Robert Fox",
@@ -311,6 +311,21 @@ const HomePage = () => {
     axios.post(BASE_API_URL + "listings").then((response) => setProjects(response.data)).catch((response) => {
       console.log(response.data)
     })
+
+    axios.post(BASE_API_URL + "herosection").then((response) => {
+      setNetLaunchers(response.data[0].count_project)
+      setUnitTypes(response.data[0].count_unittype)
+      setFloorPlans(response.data[0].count_floorplans)
+    }).catch((response) => {
+      console.log(response.data)
+    })
+
+    axios.post(BASE_API_URL + "testimonials").then((response) => {
+      setTestimonials(response.data)
+    }).catch((response) => {
+      console.log(response.data)
+    })
+
   }, [])
 
 
@@ -452,7 +467,7 @@ const HomePage = () => {
           <H2>Experince New Launches</H2>
           <div className='text-app-black-80 mt-4'>Product innovations, to Live Anywhere updates.</div>
           <div className='mt-10 overflow-x-auto flex-col md:flex-row flex gap-10 pb-10'>
-            {clients.map((client, idx) => (
+            {testimonials.map((client, idx) => (
               <ClientItem client={client} key={idx} />
             ))}
           </div>
