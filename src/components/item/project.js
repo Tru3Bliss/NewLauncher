@@ -13,9 +13,9 @@ const ProjectItem = (props) => {
   return (
     <div className="flex flex-col border-app-gray-30 rounded-lg border divide-y divide-app-gray-30">
       <div className="flex flex-col md:flex-row">
-        <div className="md:h-43 w-full md:w-60 relative text-white">
-          {loadstatus === 2 ? <img src={DummyImg} alt={project.project_image_alt} className="md:h-43 w-full md:w-60 rounded-t-lg rounded-r-none" />
-            : <img src={BASE_URL+project.project_image_path} alt={project.project_image_alt} className={`md:h-43 w-full md:w-60 rounded-t-lg rounded-r-none ${loadstatus === 3 && "hidden"}`} onLoad={() => { if (loadstatus != 2) setLoadStatus(1) }} onError={() => setLoadStatus(2)} />}
+        <div className="md:h-46 w-full md:w-60 relative text-white">
+          {loadstatus === 2 ? <img src={DummyImg} alt={project.project_image_alt} className="md:h-46 w-full md:w-60 rounded-t-lg rounded-r-none" />
+            : <img src={BASE_URL+project.project_image_path} alt={project.project_image_alt} className={`md:h-46 w-full md:w-60 rounded-t-lg rounded-r-none ${loadstatus === 3 && "hidden"}`} onLoad={() => { if (loadstatus != 2) setLoadStatus(1) }} onError={() => setLoadStatus(2)} />}
           <div className="px-2 py-1 bg-app-primary-100 absolute top-2 left-2 rounded-md text-xs">{project.project_category}</div>
           <div className="bg-app-transparent rounded-md flex gap-1 px-2 py-1 absolute bottom-2 left-2 w-max ">
             <img src={ImgIcon} alt="img" />
@@ -23,7 +23,7 @@ const ProjectItem = (props) => {
           </div>
         </div>
         <div className="flex flex-col justify-center px-4 gap-2 py-3">
-          <div className="flex gap-1">
+          <div className="flex gap-1 flex-wrap whitespace-nowrap">
             <StatusBadge>Upcoming Launch</StatusBadge>
             <StatusBadge>From 22nd Dec 2022</StatusBadge>
             <StatusBadge>Indicative Prices</StatusBadge>
@@ -53,7 +53,7 @@ const ProjectItem = (props) => {
             <p>{project.top}</p>
             <p>{project.tenure_name}</p>
           </div>
-          <div className="flex gap-1">
+          <div className="flex gap-1 flex-wrap whitespace-nowrap">
             <UnitBadge>Total: 450 units</UnitBadge>
             <UnitBadge>Available: 150 units</UnitBadge>
             <UnitBadge>Sold: 300 units</UnitBadge>
@@ -65,7 +65,7 @@ const ProjectItem = (props) => {
           <UnitItem unit={unit} key={idx} />
         ))}
       </div>
-      <div className="flex justify-between h-17 items-center px-5 ">
+      <div className="flex justify-between tiny:h-17 items-center px-5 tiny:flex-row flex-col py-2 tiny:py-0 gap-2 tiny:gap-0">
         <div className="flex gap-2 w-full">
           {devLoadStatus === 2 ? <img src={DummyImg} alt="developer" className="w-10 h-10 rounded-full" />
             : <img src={BASE_URL+project.dev_logo_path} alt="developer" className={`rounded-full w-10 h-10 ${devLoadStatus === 3 && "hidden"}`} onLoad={() => { if (devLoadStatus != 2) setDevLoadStatus(1) }} onError={() => setDevLoadStatus(2)} />}
@@ -75,10 +75,10 @@ const ProjectItem = (props) => {
             <p className="text-app-black-60 text-xs whitespace-nowrap">+1 Developer</p>
           </div>
         </div>
-        <div className="flex gap-2 flex-shrink-0">
+        <div className="flex gap-2 flex-shrink-0 w-full tiny:w-max">
           <div className="text-center items-center justify-center text-sm font-semibold border rounded-md px-1 md:px-4 md:flex hidden">{project.phone_number}</div>
-          <div className="w-18 text-center items-center justify-center flex md:hidden text-sm font-semibold border rounded-md px-1 md:px-4 text-app-primary-100 border-app-primary-100">Call Sales</div>
-          <a href={project.whatsapp_link} className="bg-app-primary-100 px-1 md:px-3 md:py-2 py-1 rounded-md w-8 h-7 md:w-11 md:h-9 items-center flex justify-center">
+          <div className="tiny:w-18 text-center items-center justify-center flex md:hidden text-sm font-semibold border rounded-md px-1 md:px-4 text-app-primary-100 border-app-primary-100 w-full">Call Sales</div>
+          <a href={project.whatsapp_link} className="bg-app-primary-100 px-1 md:px-3 md:py-2 py-1 rounded-md w-8 h-7 md:w-11 md:h-9 items-center flex justify-center flex-shrink-0">
             <img src={WhatsappIcon} alt="whatsapp" />
           </a>
         </div>

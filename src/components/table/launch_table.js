@@ -20,7 +20,7 @@ const LaunchTable = (props) => {
       </thead>
       <tbody>
         {data.map((item, idx) => (
-          <tr key={idx} className="text-center text-sm font-semibold text-app-black-100">
+          <tr key={idx} className="text-center text-sm font-semibold text-app-black-100 hover:bg-app-primary-60 cursor-pointer">
             <td  className="text-left p-3">{item.name}</td>
             <td>{item.type}</td>
             <td>{item.segment}</td>

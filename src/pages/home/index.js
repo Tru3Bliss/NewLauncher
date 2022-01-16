@@ -157,33 +157,33 @@ const HomePage = () => {
     [
       {
         name: 'Non Landed',
-        data: [44, 55, 41, 67, 22, 43, 13, 23, 20, 8, 13, 27, 13, 23, 20, 8],
+        data: [44, 55, 41, 67, 22, 43, 13, 23, 20, 8, 13, 27, 13, 23, 20, 8, 44, 55, 41, 67, 22, 43, 13, 23],
         color: "#DBAAE8"
       },
       {
         name: 'Exec Condo',
-        data: [13, 23, 20, 8, 13, 27, 11, 17, 15, 15, 21, 14, 13, 23, 20, 8],
+        data: [13, 23, 20, 8, 13, 27, 11, 17, 15, 15, 21, 14, 13, 23, 20, 8, 44, 55, 41, 67, 22, 43, 13, 23],
         color: "#9255A2"
       },
       {
         name: 'Landed',
-        data: [11, 17, 15, 15, 21, 14, 44, 55, 41, 67, 22, 43, 13, 23, 20, 8],
+        data: [11, 17, 15, 15, 21, 14, 44, 55, 41, 67, 22, 43, 13, 23, 20, 8, 44, 55, 41, 67, 22, 43, 13, 23],
         color: "#5A1879"
       }],
     [
       {
         name: 'Non Landed',
-        data: [11, 17, 15, 15, 21, 14, 44, 55, 41, 67, 22, 43, 13, 23, 20, 8],
+        data: [11, 17, 15, 15, 21, 14, 44, 55, 41, 67, 22, 43, 13, 23, 20, 8, 44, 55, 41, 67, 22, 43, 13, 23],
         color: "#DBAAE8"
       },
       {
         name: 'Exec Condo',
-        data: [13, 23, 20, 8, 13, 27, 11, 17, 15, 15, 21, 14, 13, 23, 20, 8],
+        data: [13, 23, 20, 8, 13, 27, 11, 17, 15, 15, 21, 14, 13, 23, 20, 8, 44, 55, 41, 67, 22, 43, 13, 23],
         color: "#9255A2"
       },
       {
         name: 'Landed',
-        data: [44, 55, 41, 67, 22, 43, 13, 23, 20, 8, 13, 27, 13, 23, 20, 8],
+        data: [44, 55, 41, 67, 22, 43, 13, 23, 20, 8, 13, 27, 13, 23, 20, 8, 44, 55, 41, 67, 22, 43, 13, 23],
         color: "#5A1879"
       }]
   ])
@@ -421,8 +421,8 @@ const HomePage = () => {
         <div>
           <H2>Developer Sales Volume</H2>
           <div className='text-app-black-80 mt-4'>Based on sales from Nov 19 to Nov 21</div>
-          <div className='w-full flex justify-between items-center mt-10'>
-            <Switch select={chatSelect} setSelect={setChatSelect} first="Property Type" second="Market Segment" className="" />
+          <div className='w-full flex justify-between items-center mt-10 flex-col tiny:flex-row gap-2 tiny:gap-0'>
+            <Switch select={chatSelect} setSelect={setChatSelect} first="Property Type" second="Market Segment" className="w-full" />
             <div className='flex text-lg sm:gap-2 items-center'>
               <img src={chatSelect ? IcArrowUp : IcArrowDown} />
               <p className={`${chatSelect ? "text-app-green-dark" : "text-app-red"} text-sm sm:text-base font-semibold`}>2.1%</p>

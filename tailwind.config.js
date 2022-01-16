@@ -119,6 +119,7 @@ module.exports = {
       43: "10.875rem",
       44: "11rem",
       45: '11.25rem',
+      46: "11.75rem",
       48: "12rem",
       49: "12.5rem",
       52: "13rem",
@@ -183,7 +184,7 @@ module.exports = {
       '9xl': '8rem'
     },
     screens: {
-      'tiny': "400px",
+      'tiny': "375px",
 
       'sm': '640px',
       // => @media (min-width: 640px) { ... }
