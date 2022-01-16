@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-// import * as am5 from "@amcharts/amcharts5";
-// import * as am5xy from "@amcharts/amcharts5/xy";
-// import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 import { H1, H2, Title } from '../../components/label'
 import Layout from '../../layout/layout'
 import FilterUnit from '../../components/unit/filterunit'
@@ -42,10 +41,10 @@ import Switch from '../../components/switch'
 const HomePage = () => {
   const location = useLocation()
 
-  const [newLaunchers, setNetLaunchers] = useState(0)
-  const [unitTypes, setUnitTypes] = useState(0)
-  const [floorPlans, setFloorPlans] = useState(0)
-  const [filter, setFilter] = useState(location.state?.filter)
+  const [newLaunchers, setNetLaunchers] = useState()
+  const [unitTypes, setUnitTypes] = useState()
+  const [floorPlans, setFloorPlans] = useState()
+  const [filter, setFilter] = useState([])
   const [chatSelect, setChatSelect] = useState(false)
   const [expand, setExpand] = useState(false)
   const [topOne, setTopOne] = useState(
@@ -131,7 +130,420 @@ const HomePage = () => {
       },
     ]
   )
-  const [projects, setProjects] = useState([])
+  const [projects, setProjects] = useState(
+    [
+      {
+          project_id: "55",
+          project_name: "One Pearl Bank",
+          project_address: "Pearl Bank",
+          whatsapp_link: "https://wa.link/ulxoeb",
+          phone_number: "+6585971878",
+          project_category: "Private Condominium",
+          project_development: "",
+          project_mixed_type: "",
+          launch_date: "2019-07-20",
+          total_unit: "774",
+          available_unit: "242",
+          sold_unit: "532",
+          count_launched_days: "911",
+          sales_rate: "0.5840",
+          district_id: "24",
+          district_code: "D3",
+          district_name: "queenstown, redhill, tiong bahru",
+          subregion_id: "3",
+          subregion_name: "city fringe",
+          region_id: "1",
+          region_name: "central region",
+          mrt_dist: "204",
+          station_name: "Outram Park",
+          line_code: "NE,TE,EW",
+          station_number: "3,17,16",
+          line_color: "#9E27B5,#9D5A18,#00943A",
+          line_text_color: "#FFFFFF,#FFFFFF,#FFFFFF",
+          top: "Dec 2023",
+          raw_top: "2023-12-31",
+          top_filter: "2023",
+          completion_status: "Uncompleted / Under Construction",
+          tenure_id: "1",
+          tenure_name: "99 Years",
+          project_image_path: "project_img/web_crop_Image-1_CapitaLand-unveils-One-Pearl-Bank.jpg",
+          project_image_alt: null,
+          project_image_title: null,
+          count_images: "11",
+          count_developers: "1",
+          developer_name: "CapitaLand Development",
+          dev_logo_path: "dev_logo/CapitaLand Logo.png",
+          dev_logo_alt: null,
+          dev_logo_title: "CapitaLand Logo",
+          marketsegment_id: "2",
+          marketsegment_code: "RCR",
+          marketsegment_name: "Rest Of Central Region",
+          category_id: "4",
+          category_name: "Big",
+          developer_note: "Developer Sales Team",
+          units: [
+              {
+                  project_id: "55",
+                  un_id: "139",
+                  unit_name: "Studio",
+                  count_type: "4",
+                  size_from: "431",
+                  size_to: "431",
+                  price_from: "1174000",
+                  price_to: "1176000",
+                  psf_from: "2724",
+                  psf_to: "2729",
+                  unit_types: [
+                      {
+                          ut_id: "256",
+                          ut_name: "A1-a",
+                          ut_category: "Condo / Apartment",
+                          size_from: "431",
+                          size_to: "431",
+                          price_from: "1176000",
+                          price_to: "1176000",
+                          psf_from: "2729",
+                          psf_to: "2729"
+                      },
+                      {
+                          ut_id: "257",
+                          ut_name: "A1-a (m)",
+                          ut_category: "Condo / Apartment",
+                          size_from: "431",
+                          size_to: "431",
+                          price_from: "1174000",
+                          price_to: "1174000",
+                          psf_from: "2724",
+                          psf_to: "2724"
+                      },
+                      {
+                          ut_id: "258",
+                          ut_name: "A1-b",
+                          ut_category: "Condo / Apartment",
+                          size_from: "431",
+                          size_to: "431",
+                          price_from: "1176000",
+                          price_to: "1176000",
+                          psf_from: "2726",
+                          psf_to: "2726"
+                      },
+                      {
+                          ut_id: "259",
+                          ut_name: "A1-b(m)",
+                          ut_category: "Condo / Apartment",
+                          size_from: "431",
+                          size_to: "431",
+                          price_from: "1176000",
+                          price_to: "1176000",
+                          psf_from: "2726",
+                          psf_to: "2726"
+                      }
+                  ]
+              },
+              {
+                  project_id: "55",
+                  un_id: "140",
+                  unit_name: "1-Bedroom",
+                  count_type: "5",
+                  size_from: "527",
+                  size_to: "570",
+                  price_from: "1360000",
+                  price_to: "1561000",
+                  psf_from: "2580",
+                  psf_to: "2785",
+                  unit_types: [
+                      {
+                          ut_id: "260",
+                          ut_name: "B1-a",
+                          ut_category: "Condo / Apartment",
+                          size_from: "570",
+                          size_to: "570",
+                          price_from: "1525000",
+                          price_to: "1525000",
+                          psf_from: "2675",
+                          psf_to: "2675"
+                      },
+                      {
+                          ut_id: "261",
+                          ut_name: "B1-b",
+                          ut_category: "Condo / Apartment",
+                          size_from: "570",
+                          size_to: "570",
+                          price_from: "1530000",
+                          price_to: "1530000",
+                          psf_from: "2684",
+                          psf_to: "2684"
+                      },
+                      {
+                          ut_id: "262",
+                          ut_name: "B3-b",
+                          ut_category: "Condo / Apartment",
+                          size_from: "527",
+                          size_to: "527",
+                          price_from: "1360000",
+                          price_to: "1360000",
+                          psf_from: "2580",
+                          psf_to: "2580"
+                      },
+                      {
+                          ut_id: "263",
+                          ut_name: "B4-a",
+                          ut_category: "Condo / Apartment",
+                          size_from: "560",
+                          size_to: "560",
+                          price_from: "1560000",
+                          price_to: "1560000",
+                          psf_from: "2785",
+                          psf_to: "2785"
+                      },
+                      {
+                          ut_id: "264",
+                          ut_name: "B4-b",
+                          ut_category: "Condo / Apartment",
+                          size_from: "560",
+                          size_to: "560",
+                          price_from: "1561000",
+                          price_to: "1561000",
+                          psf_from: "2785",
+                          psf_to: "2785"
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          project_id: "57",
+          project_name: "Test Developer Delete",
+          project_address: "Test",
+          whatsapp_link: "https://wa.link/ulxoeb",
+          phone_number: "85971878",
+          project_category: "Private Condominium",
+          project_development: "Mixed Development",
+          project_mixed_type: null,
+          launch_date: "2019-12-22",
+          total_unit: "500",
+          available_unit: "100",
+          sold_unit: "400",
+          count_launched_days: "756",
+          sales_rate: "0.5291",
+          district_id: "28",
+          district_code: "D8",
+          district_name: "farrer park, serangoon, little india",
+          subregion_id: "3",
+          subregion_name: "city fringe",
+          region_id: "1",
+          region_name: "central region",
+          mrt_dist: "233",
+          station_name: "Aljunied",
+          line_code: "EW",
+          station_number: "9",
+          line_color: "#00943A",
+          line_text_color: "#FFFFFF",
+          top: "Dec 2022",
+          raw_top: "2022-12-22",
+          top_filter: "2022",
+          completion_status: "Uncompleted / Under Construction",
+          tenure_id: "1",
+          tenure_name: "99 Years",
+          project_image_path: "project_img/Amber-Park-Aerial-Image.jpg",
+          project_image_alt: null,
+          project_image_title: null,
+          count_images: "1",
+          count_developers: "1",
+          developer_name: "Ahamed Sha",
+          dev_logo_path: "dev_logo/Unit Configuration Mix.png",
+          dev_logo_alt: null,
+          dev_logo_title: null,
+          marketsegment_id: "1",
+          marketsegment_code: "CCR",
+          marketsegment_name: "Core Central Region",
+          category_id: "1",
+          category_name: "Boutique",
+          developer_note: "Developer Sales Team",
+          units: [
+              {
+                  project_id: "57",
+                  un_id: "193",
+                  unit_name: "1-bedroom",
+                  count_type: "1",
+                  size_from: "100",
+                  size_to: "100",
+                  price_from: "200",
+                  price_to: "200",
+                  psf_from: "200",
+                  psf_to: "200",
+                  unit_types: [
+                      {
+                          ut_id: "317",
+                          ut_name: "1bs",
+                          ut_category: "Condo / Apartment",
+                          size_from: "100",
+                          size_to: "100",
+                          price_from: "200",
+                          price_to: "200",
+                          psf_from: "200",
+                          psf_to: "200"
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          project_id: "54",
+          project_name: "Flying Castle",
+          project_address: "Heavenhold",
+          whatsapp_link: "1231",
+          phone_number: "123123",
+          project_category: "Executive Condominium",
+          project_development: null,
+          project_mixed_type: null,
+          launch_date: "2029-12-12",
+          total_unit: "1400",
+          available_unit: "1200",
+          sold_unit: "200",
+          count_launched_days: "-2887",
+          sales_rate: "0.0000",
+          district_id: "49",
+          district_code: "D5",
+          district_name: "pasir panjang, west coast",
+          subregion_id: null,
+          subregion_name: null,
+          region_id: "3",
+          region_name: "west region",
+          mrt_dist: "1250",
+          station_name: "Ang Mo Kio",
+          line_code: "NS,CR",
+          station_number: "16,11",
+          line_color: "#E2211C,#96D508",
+          line_text_color: "#FFFFFF,#2C2A25",
+          top: "Dec 2029",
+          raw_top: "2029-12-12",
+          top_filter: "2029",
+          completion_status: "Uncompleted / Under Construction",
+          tenure_id: "2",
+          tenure_name: "999 Years",
+          project_image_path: "project_img/Amber-Park-Aerial-Image.jpg",
+          project_image_alt: null,
+          project_image_title: null,
+          count_images: "3",
+          count_developers: "2",
+          developer_name: "Ahamed Sha",
+          dev_logo_path: "dev_logo/Unit Configuration Mix.png",
+          dev_logo_alt: null,
+          dev_logo_title: null,
+          marketsegment_id: "2",
+          marketsegment_code: "RCR",
+          marketsegment_name: "Rest Of Central Region",
+          category_id: "5",
+          category_name: "Mega",
+          developer_note: "+2 other developer(s)",
+          units: [
+              {
+                  project_id: "54",
+                  un_id: "191",
+                  unit_name: "Test 1",
+                  count_type: "1",
+                  size_from: "896",
+                  size_to: "896",
+                  price_from: "1000000",
+                  price_to: "1000000",
+                  psf_from: "1000",
+                  psf_to: "1000",
+                  unit_types: [
+                      {
+                          ut_id: "315",
+                          ut_name: "TEST 1 A",
+                          ut_category: "Condo / Apartment",
+                          size_from: "896",
+                          size_to: "896",
+                          price_from: "1000000",
+                          price_to: "1000000",
+                          psf_from: "1000",
+                          psf_to: "1000"
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          project_id: "59",
+          project_name: "TEST INACTIVE",
+          project_address: "test",
+          whatsapp_link: "12312312",
+          phone_number: "123123",
+          project_category: "Private Condominium",
+          project_development: "Mixed Development",
+          project_mixed_type: "Integrated Development",
+          launch_date: "3131-12-12",
+          total_unit: null,
+          available_unit: null,
+          sold_unit: "0",
+          count_launched_days: "-405383",
+          sales_rate: "0.0000",
+          district_id: "62",
+          district_code: "D25",
+          district_name: "admiralty, woodlands",
+          subregion_id: null,
+          subregion_name: null,
+          region_id: "5",
+          region_name: "north region",
+          mrt_dist: "1231",
+          station_name: "Aljunied",
+          line_code: "EW",
+          station_number: "9",
+          line_color: "#00943A",
+          line_text_color: "#FFFFFF",
+          top: "Mar 1231",
+          raw_top: "1231-03-12",
+          top_filter: "completed",
+          completion_status: "Completed / TOP Obtained",
+          tenure_id: "2",
+          tenure_name: "999 Years",
+          project_image_path: "project_img/Amber-Park-Aerial-View.jpg",
+          project_image_alt: null,
+          project_image_title: null,
+          count_images: "1",
+          count_developers: "1",
+          developer_name: "CapitaLand Development",
+          dev_logo_path: "dev_logo/CapitaLand Logo.png",
+          dev_logo_alt: null,
+          dev_logo_title: "CapitaLand Logo",
+          marketsegment_id: "2",
+          marketsegment_code: "RCR",
+          marketsegment_name: "Rest Of Central Region",
+          category_id: "5",
+          category_name: "Mega",
+          developer_note: "Developer Sales Team",
+          units: [
+              {
+                  project_id: "59",
+                  un_id: "192",
+                  unit_name: "a",
+                  count_type: "1",
+                  size_from: "1",
+                  size_to: "1",
+                  price_from: "1000001",
+                  price_to: "1000001",
+                  psf_from: "11",
+                  psf_to: "11",
+                  unit_types: [
+                      {
+                          ut_id: "316",
+                          ut_name: "a",
+                          ut_category: "Executive Condo",
+                          size_from: "1",
+                          size_to: "1",
+                          price_from: "1000001",
+                          price_to: "1000001",
+                          psf_from: "11",
+                          psf_to: "11"
+                      }
+                  ]
+              }
+          ]
+      }
+  
+  ])
 
   const [salesData, setSalesData] = useState([
     [
@@ -297,9 +709,9 @@ const HomePage = () => {
   }
 
   useEffect(() => {
-    axios.post(BASE_API_URL + "listings").then((response) => setProjects(response.data)).catch((response) => {
-      console.log(response.data)
-    })
+    // axios.post(BASE_API_URL + "listings").then((response) => setProjects(response.data)).catch((response) => {
+    //   console.log(response.data)
+    // })
 
     axios.post(BASE_API_URL + "herosection").then((response) => {
       setNetLaunchers(response.data[0].count_project)
@@ -317,12 +729,14 @@ const HomePage = () => {
 
     axios.post(BASE_API_URL + "sortsandfilters").then((response) => {
       console.log(response.data.sort_by)
-      setSortOptions(response.data[0])
+      setSortOptions(response.data[0].options)
       setFilterOptions(response.data)
     }).catch((response) => {
       console.log(response.data)
     })
 
+    if(location.state?.filter)
+      setFilter(location.state?.filter)
   }, [])
 
 
@@ -364,7 +778,7 @@ const HomePage = () => {
               <h2 className='text-2xl font-semibold'>Filter</h2>
             </div>
             <div className='overflow-y-auto text-app-black-100'>
-              <div className='flex flex-col divide-y divide-app-gray-100'>
+              <div className='flex flex-col divide-y divide-app-gray-30'>
                 <div className='lg:hidden flex'>
                   {filter.length !== 0 &&
                     <Accordion summary={
@@ -382,7 +796,7 @@ const HomePage = () => {
                 </div>
                 {
                   filterOptions.map((option, idx) => (
-                    <FilterUnit option={option} key={idx} filter={filter} setFilter={setFilter} />
+                    idx > 0 && <FilterUnit option={option} key={idx} filter={filter} setFilter={setFilter} />
                   ))
                 }
               </div>
@@ -394,7 +808,7 @@ const HomePage = () => {
                 <h2 className='text-2xl font-semibold'>Available New Launches</h2>
                 {projects.length > 0 && <p className='text-app-black-80'>Showing 1 - {projects.length >= 10 ? 10 : projects.length} of {projects.length} available launches</p>}
               </div>
-              <div className='flex justify-between w-full'>
+              <div className='flex justify-between w-full md:max-w-190 mt-5'>
                 <button href="/filter" className='md:hidden flex px-3 gap-2 rounded-md border items-center' onClick={handleFilter}>
                   <img src={FilterIcon} alt='filter' className='w-4 h-4' />
                   <p>Filter</p>
@@ -402,7 +816,7 @@ const HomePage = () => {
                     {filter.length}
                   </div>}
                 </button>
-                {sortOptions.length > 0 && <Accordion summary={<div className='truncate'>{sortOptions[selectedOption].name}</div>} className="max-w-190 w-full border rounded-md py-2 px-3 relative" autoclose={true} >
+                {sortOptions.length > 0 && <Accordion summary={<div className='truncate'>{sortOptions[selectedOption].name}</div>} className="cursor-pointer max-w-190 w-full border rounded-md py-2 px-3 relative" autoclose={true} >
                   <div className='absolute z-10 bg-white w-full left-0 transform translate-y-3 border rounded-md'>
                     {sortOptions.map((option, idx) => (
                       <div key={idx} className='text-sm py-2 w-full px-4 cursor-pointer hover:bg-app-primary-60 truncate' onClick={() => setSelectedOption(idx)}>{option.name}</div>
@@ -413,8 +827,8 @@ const HomePage = () => {
             </div>
             <div className='mt-6'>
               {filter.length !== 0 &&
-                <div className="">
-                  <div className='md:flex flex-wrap gap-1 pb-8 hidden'>
+                <div className="pb-8">
+                  <div className='md:flex flex-wrap gap-1 hidden'>
                     {filter.map((item, idx) => (<FilterBadge key={idx} remove={() => handleRemove(item)} mode="purple">{item.name}</FilterBadge>))}
                     <button onClick={handleClear} className='text-app-primary-100 font-semibold text-sm px-2'>Clear All</button>
                   </div>
