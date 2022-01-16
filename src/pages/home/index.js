@@ -317,7 +317,7 @@ const HomePage = () => {
 
     axios.post(BASE_API_URL + "sortsandfilters").then((response) => {
       console.log(response.data.sort_by)
-      setSortOptions(response.data.sort_by)
+      setSortOptions(response.data[0])
       setFilterOptions(response.data)
     }).catch((response) => {
       console.log(response.data)
@@ -380,11 +380,11 @@ const HomePage = () => {
                       </div>
                     </Accordion>}
                 </div>
-                {/* {
+                {
                   filterOptions.map((option, idx) => (
                     <FilterUnit option={option} key={idx} filter={filter} setFilter={setFilter} />
                   ))
-                } */}
+                }
               </div>
             </div>
           </div>
@@ -413,7 +413,7 @@ const HomePage = () => {
             </div>
             <div className='mt-6'>
               {filter.length !== 0 &&
-                <div className="" subClassname={filter.length > 0 ? "h-19" : "h-12.6"} expand={expand} setExpand={setExpand}>
+                <div className="">
                   <div className='md:flex flex-wrap gap-1 pb-8 hidden'>
                     {filter.map((item, idx) => (<FilterBadge key={idx} remove={() => handleRemove(item)} mode="purple">{item.name}</FilterBadge>))}
                     <button onClick={handleClear} className='text-app-primary-100 font-semibold text-sm px-2'>Clear All</button>
