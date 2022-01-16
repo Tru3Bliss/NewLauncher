@@ -87,7 +87,7 @@ module.exports = {
       2.5: "0.625rem",
       3: "0.75rem",
       3.5: "0.875rem",
-      3.6: "15px",
+      3.6: "18px",
       4: "1rem",
       5: "1.25rem",
       5.5: "21px",
@@ -167,7 +167,8 @@ module.exports = {
     },
     minHeight: {
       sm: "8.75rem",
-      md: "13rem"
+      md: "13rem",
+      screen: "100vh"
     },
     fontSize: {
       'xxs': '10px',

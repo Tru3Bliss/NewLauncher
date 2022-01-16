@@ -5,11 +5,12 @@ import React, { useEffect, useState } from 'react'
 import { H1, H2, Title } from '../../components/label'
 import Layout from '../../layout/layout'
 import FilterUnit from '../../components/unit/filterunit'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Accordion from '../../components/accordion'
 import { BadgeButton, FilterBadge } from '../../components/badge'
 import { SplitedProgressBar } from '../../components/progress'
 import ForbesIcon from '../../assets/icons/ic_forbes.svg'
+import FilterIcon from '../../assets/icons/ic_filter.svg'
 import BloombergIcon from '../../assets/icons/ic_bloomberg.svg'
 import YahooIcon from '../../assets/icons/ic_yahoo.svg'
 import Img1 from '../../assets/images/img1.png'
@@ -39,11 +40,12 @@ import ApexChart from '../../components/chart';
 import Switch from '../../components/switch'
 
 const HomePage = () => {
+  const location = useLocation()
 
   const [newLaunchers, setNetLaunchers] = useState(0)
   const [unitTypes, setUnitTypes] = useState(0)
   const [floorPlans, setFloorPlans] = useState(0)
-  const [filter, setFilter] = useState([])
+  const [filter, setFilter] = useState(location.state?.filter)
   const [chatSelect, setChatSelect] = useState(false)
   const [expand, setExpand] = useState(false)
   const [topOne, setTopOne] = useState(
@@ -286,6 +288,13 @@ const HomePage = () => {
   const handleRemove = (item) => {
     setFilter(filter.filter(e => e !== item))
   }
+  const handleFilter = () => {
+    navigate('/filter', {
+      state: {
+        filter: filter
+      }
+    })
+  }
 
   useEffect(() => {
     axios.post(BASE_API_URL + "listings").then((response) => setProjects(response.data)).catch((response) => {
@@ -309,6 +318,7 @@ const HomePage = () => {
     axios.post(BASE_API_URL + "sortsandfilters").then((response) => {
       console.log(response.data.sort_by)
       setSortOptions(response.data.sort_by)
+      setFilterOptions(response.data)
     }).catch((response) => {
       console.log(response.data)
     })
@@ -370,34 +380,52 @@ const HomePage = () => {
                       </div>
                     </Accordion>}
                 </div>
-                {
+                {/* {
                   filterOptions.map((option, idx) => (
                     <FilterUnit option={option} key={idx} filter={filter} setFilter={setFilter} />
                   ))
-                }
+                } */}
               </div>
             </div>
           </div>
           <div className='lg:w-1/2 w-full'>
-            <div className='flex items-center justify-between'>
+            <div className='flex items-start md:items-center justify-between md:flex-row flex-col'>
               <div className='flex flex-col gap-1'>
                 <h2 className='text-2xl font-semibold'>Available New Launches</h2>
-                {projects.length>0 && <p className='text-app-black-80'>Showing 1 - {projects.length>=10?10:projects.length} of {projects.length} available launches</p>}
+                {projects.length > 0 && <p className='text-app-black-80'>Showing 1 - {projects.length >= 10 ? 10 : projects.length} of {projects.length} available launches</p>}
               </div>
-              {sortOptions.length > 0 && <Accordion summary={<div className='truncate'>{sortOptions[selectedOption].name}</div>} className="max-w-190 w-full border rounded-md py-2 px-3 relative" autoclose={true} >
-                <div className='absolute z-10 bg-white w-full left-0 transform translate-y-3 border rounded-md'>
-                  {sortOptions.map((option, idx) => (
-                    <div key={idx} className='text-sm py-2 w-full px-4 cursor-pointer hover:bg-app-primary-60 truncate' onClick={()=>setSelectedOption(idx)}>{option.name}</div>
-                  ))}
-                </div>
-              </Accordion>}
+              <div className='flex justify-between w-full'>
+                <button href="/filter" className='md:hidden flex px-3 gap-2 rounded-md border items-center' onClick={handleFilter}>
+                  <img src={FilterIcon} alt='filter' className='w-4 h-4' />
+                  <p>Filter</p>
+                  {filter.length > 0 && <div className='rounded-full w-3.6 h-3.6 items-center justify-center text-xs flex bg-app-primary-100 text-white flex-shrink-0'>
+                    {filter.length}
+                  </div>}
+                </button>
+                {sortOptions.length > 0 && <Accordion summary={<div className='truncate'>{sortOptions[selectedOption].name}</div>} className="max-w-190 w-full border rounded-md py-2 px-3 relative" autoclose={true} >
+                  <div className='absolute z-10 bg-white w-full left-0 transform translate-y-3 border rounded-md'>
+                    {sortOptions.map((option, idx) => (
+                      <div key={idx} className='text-sm py-2 w-full px-4 cursor-pointer hover:bg-app-primary-60 truncate' onClick={() => setSelectedOption(idx)}>{option.name}</div>
+                    ))}
+                  </div>
+                </Accordion>}
+              </div>
             </div>
-            <div className='lg:flex hidden mt-6'>
+            <div className='mt-6'>
               {filter.length !== 0 &&
                 <div className="" subClassname={filter.length > 0 ? "h-19" : "h-12.6"} expand={expand} setExpand={setExpand}>
-                  <div className='flex flex-wrap gap-1 pb-8'>
+                  <div className='md:flex flex-wrap gap-1 pb-8 hidden'>
                     {filter.map((item, idx) => (<FilterBadge key={idx} remove={() => handleRemove(item)} mode="purple">{item.name}</FilterBadge>))}
                     <button onClick={handleClear} className='text-app-primary-100 font-semibold text-sm px-2'>Clear All</button>
+                  </div>
+                  <div className='flex flex-row gap-1 md:hidden h-7'>
+                    <div className='w-full flex overflow-x-hidden relative'>
+                      <div className='absolute flex gap-1 left-0 w-max'>
+                        {filter.map((item, idx) => (<FilterBadge key={idx} remove={() => handleRemove(item)} mode="purple">{item.name}</FilterBadge>))}
+                      </div>
+                      <div className='w-8 bg-gradient-to-l from-white h-full right-0 absolute top-0'></div>
+                    </div>
+                    <button onClick={handleClear} className='whitespace-nowrap text-app-primary-100 font-semibold text-sm px-2'>Clear All</button>
                   </div>
                 </div>}
             </div>
@@ -427,8 +455,11 @@ const HomePage = () => {
         <div>
           <H2>Trending New Launches</H2>
           <div className='text-app-black-80 mt-4'>Based on units sold in Nov 21</div>
-          <div className='mt-10 overflow-x-auto'>
-            <LaunchTable data={newLaunchData} />
+          <div className='mt-10 overflow-x-auto relative'>
+            <div className='overflow-x-auto'>
+              <LaunchTable data={newLaunchData} />
+            </div>
+            <div className='w-15 bg-gradient-to-l from-white h-full md:hidden absolute right-0 top-0'></div>
           </div>
           <p className='text-app-black-60 text-sm mt-9'>Source: Urban Redevelopment Authority (URA)</p>
         </div>
@@ -444,8 +475,11 @@ const HomePage = () => {
               <p className='text-xs sm:text-sm'>&nbsp; vs last month</p>
             </div>
           </div>
-          <div className='mt-10 overflow-x-auto'>
-            <ApexChart data={chatSelect ? salesData[0] : salesData[1]} />
+          <div className='mt-10 relative'>
+            <div className='overflow-x-auto '>
+              <ApexChart data={chatSelect ? salesData[0] : salesData[1]} />
+            </div>
+            <div className='w-15 bg-gradient-to-l from-white h-full md:hidden absolute right-0 top-0'></div>
           </div>
           <p className='text-app-black-60 text-sm mt-9'>Source: Urban Redevelopment Authority (URA)</p>
         </div>

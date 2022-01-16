@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Layout from '../../layout/layout';
 import backIcon from '../../assets/icons/ic_back.svg';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { StandardButton } from '../../components/button';
 import { filterOptions } from './options';
 import FilterUnit from './filterunit';
@@ -9,21 +9,26 @@ import Accordion from '../../components/accordion';
 import { BadgeButton, FilterBadge } from '../../components/badge';
 
 const FilterPage = () => {
+  const location = useLocation()
   const [count, setCount] = useState(0)
-  const [filter, setFilter] = useState([])
+  const [filter, setFilter] = useState(location.state?.filter)
   const [expand, setExpand] = useState(false)
   const handleClear = () => {
     setFilter([])
   }
   let navigate = useNavigate()
   const handleBack = () => {
-    navigate("/");
+    navigate("/", {
+      state: {
+        filter: filter
+      }
+    });
   }
   const handleRemove = (item) => {
     setFilter(filter.filter(e => e !== item))
   }
   return (
-    <Layout page="Filter">
+    <div className='min-h-screen flex flex-col'>
       <div className='justify-between items-center flex h-16 px-4 text-app-black-100'>
         <div className='flex items-center gap-4'>
           <div onClick={handleBack}>
@@ -33,8 +38,8 @@ const FilterPage = () => {
         </div>
         <button className='capitalize text-sm text-app-primary-100 font-semibold cursor-pointer' onClick={() => { setFilter([]) }}>clear all</button>
       </div>
-      <div className='overflow-y-auto text-app-black-100' style={{ height: "calc(100vh - 64px)" }}>
-        <div className='flex flex-col divide-y divide-app-gray-100'>
+      <div className='overflow-y-auto text-app-black-100 h-full flex-1 flex flex-col' >
+        <div className='flex flex-col divide-y divide-app-gray-100 flex-1'>
           {filter.length !== 0 &&
             <Accordion summary={
               <div className=''>
@@ -60,7 +65,7 @@ const FilterPage = () => {
           </StandardButton>
         </div>
       </div>
-    </Layout>)
+    </div>)
 }
 
 
