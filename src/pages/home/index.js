@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 // import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import { H1, H2, Title } from '../../components/label'
 import Layout from '../../layout/layout'
-import { filterOptions } from './options'
 import FilterUnit from '../../components/unit/filterunit'
 import { useNavigate } from 'react-router-dom'
 import Accordion from '../../components/accordion'
@@ -97,28 +96,7 @@ const HomePage = () => {
       },
     ]
   )
-  const [testimonials, setTestimonials] = useState(
-    [
-      {
-        name: "Robert Fox",
-        info: "Landlord of Amber Park",
-        feedback: "Amet minim mollit non deserunt ullamco est sit    aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.",
-        img: Client1
-      },
-      {
-        name: "Cameron Williamson",
-        info: "Marketing Manager of EDEN",
-        feedback: "Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim m     ollit non deserunt ullamco est sit aliqua dolor do amet sint.”",
-        img: Client2
-      },
-      {
-        name: "Jacob Jones",
-        info: "President of SOHO Condo",
-        feedback: "Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt qui esse pariatur duis deserunt mollit dolore cillum minim tempor enim. Elit aute irure tempor cupidatat incididunt sint deserunt ut voluptate aute id deserunt nisi.",
-        img: Client3
-      },
-    ]
-  )
+  const [testimonials, setTestimonials] = useState([])
   const [launches, setLaunches] = useState(
     [
       {
@@ -289,7 +267,9 @@ const HomePage = () => {
       high_psf: "$680",
     },
   ])
-
+  const [sortOptions, setSortOptions] = useState([])
+  const [selectedOption, setSelectedOption] = useState(0)
+  const [filterOptions, setFilterOptions] = useState([])
   async function getData() {
     const res = await axios('/data');
     return await res.json(); // (Or whatever)
@@ -322,6 +302,13 @@ const HomePage = () => {
 
     axios.post(BASE_API_URL + "testimonials").then((response) => {
       setTestimonials(response.data)
+    }).catch((response) => {
+      console.log(response.data)
+    })
+
+    axios.post(BASE_API_URL + "sortsandfilters").then((response) => {
+      console.log(response.data.sort_by)
+      setSortOptions(response.data.sort_by)
     }).catch((response) => {
       console.log(response.data)
     })
@@ -392,10 +379,23 @@ const HomePage = () => {
             </div>
           </div>
           <div className='lg:w-1/2 w-full'>
-            <div className='lg:flex hidden'>
+            <div className='flex items-center justify-between'>
+              <div className='flex flex-col gap-1'>
+                <h2 className='text-2xl font-semibold'>Available New Launches</h2>
+                {projects.length>0 && <p className='text-app-black-80'>Showing 1 - {projects.length>=10?10:projects.length} of {projects.length} available launches</p>}
+              </div>
+              {sortOptions.length > 0 && <Accordion summary={<div className='truncate'>{sortOptions[selectedOption].name}</div>} className="max-w-190 w-full border rounded-md py-2 px-3 relative" autoclose={true} >
+                <div className='absolute z-10 bg-white w-full left-0 transform translate-y-3 border rounded-md'>
+                  {sortOptions.map((option, idx) => (
+                    <div key={idx} className='text-sm py-2 w-full px-4 cursor-pointer hover:bg-app-primary-60 truncate' onClick={()=>setSelectedOption(idx)}>{option.name}</div>
+                  ))}
+                </div>
+              </Accordion>}
+            </div>
+            <div className='lg:flex hidden mt-6'>
               {filter.length !== 0 &&
                 <div className="" subClassname={filter.length > 0 ? "h-19" : "h-12.6"} expand={expand} setExpand={setExpand}>
-                  <div className='flex flex-wrap gap-1 pb-4'>
+                  <div className='flex flex-wrap gap-1 pb-8'>
                     {filter.map((item, idx) => (<FilterBadge key={idx} remove={() => handleRemove(item)} mode="purple">{item.name}</FilterBadge>))}
                     <button onClick={handleClear} className='text-app-primary-100 font-semibold text-sm px-2'>Clear All</button>
                   </div>

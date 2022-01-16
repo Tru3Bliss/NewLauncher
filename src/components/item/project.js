@@ -22,7 +22,7 @@ const ProjectItem = (props) => {
             <p>12</p>
           </div>
         </div>
-        <div className="flex flex-col justify-center px-4 gap-2 py-3">
+        <div className="flex flex-col justify-center px-4 gap-1 py-3">
           <div className="flex gap-1 flex-wrap whitespace-nowrap">
             <StatusBadge>Upcoming Launch</StatusBadge>
             <StatusBadge>From 22nd Dec 2022</StatusBadge>

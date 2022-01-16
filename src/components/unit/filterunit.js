@@ -60,7 +60,7 @@ const FilterUnit = (props) => {
           <p className='text-base font-semibold'>{option.title}</p>
           <BadgeButton count={checked.length} clear={clear} className={checked.length === 0 && "hidden"} />
         </div>
-        <p className={`whitespace-nowrap overflow-hidden truncate text-sm text-app-gray-600 ${checked.length === 0 && "hidden"}`}>{checked.map((item) => (item.name) + ", ")}</p>
+        <p className={`whitespace-nowrap overflow-hidden truncate text-sm text-app-gray-600 md:hidden ${checked.length === 0 && "hidden"}`}>{checked.map((item) => (item.name) + ", ")}</p>
       </div>} className="" subClassname={checked.length > 0 ? "h-19" : "h-12.6"} expand={expand} setExpand={setExpand}>
       <div className='flex flex-col gap-3'>
         <SearchInput placeholder={`Search ${option.title}`} keyword={keyword} setKeyword={setKeyword} />

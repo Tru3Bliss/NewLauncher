@@ -160,6 +160,7 @@ module.exports = {
       100: "48rem",
       115: "75rem",
       120: "64rem",
+      190: "190px",
       full: "100%",
       min: "min-content",
       max: "max-content",
@@ -171,6 +172,7 @@ module.exports = {
     fontSize: {
       'xxs': '10px',
       'xs': '12px',
+      'sm': '14px',
       'base': '1rem',
       'lg': '1.125rem',
       'xl': '1.25rem',

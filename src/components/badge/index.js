@@ -1,6 +1,8 @@
 import React from 'react';
 import roundedCloseIcon from '../../assets/icons/ic_rounded_close.svg';
 import roundedDarkIcon from '../../assets/icons/ic_rounded_dark_close.svg';
+import roundedPurpleIcon from '../../assets/icons/ic_rounded_purple_close.svg';
+
 export const BadgeButton = (props) => {
   const { clear, count, className } = props
   const handleClear = (e) =>{
@@ -18,16 +20,16 @@ export const BadgeButton = (props) => {
 }
 
 export const FilterBadge = (props) =>{
-  const { children, className, remove } = props
+  const { children, className, remove, mode } = props
   const handleClear = (e) =>{
     e.stopPropagation();
     remove()
   }
   return (
-    <div className={`rounded-full h-7 px-2 border border-app-gray-400 text-black bg-white flex items-center gap-1 ${className}`}>
+    <div className={`rounded-full h-7 px-2 border  ${mode==="purple"?"text-app-primary-light border-app-primary-light bg-app-primary-60":"text-black border-app-gray-400"} bg-white flex items-center gap-1 ${className}`}>
       <span className='text-sm'>{children}</span>
       <div onClick={handleClear}>
-        <img src={roundedDarkIcon} alt='close' />
+        <img src={mode==="purple"?roundedPurpleIcon:roundedDarkIcon} alt='close' />
       </div>
     </div>
   )
