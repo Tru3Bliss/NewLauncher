@@ -6,7 +6,7 @@ import { StandardButton } from "../../components/button";
 const Navbar = (props) => {
   const { setOpenSlide, openLang } = props
   return (
-    <div className="px-4 h-16 flex justify-between w-full items-center border-b border-app-gray-20 fixed top-0 bg-white z-20">
+    <div className="px-4 h-16 flex justify-between w-full items-center border-b border-app-gray-20 fixed top-0 bg-white z-10">
       <a href='/' className="flex items-center text-app-yellow h-full fill-current">
         <img src={Logo} alt="logo" />
       </a>

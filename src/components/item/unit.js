@@ -20,7 +20,7 @@ const ButtonGroup = ({
   }
   const width = parseInt(100 / totalItems)
   return (
-    <div className="absolute right-20 left-0 bottom-0 z-50 w-full">
+    <div className="absolute right-20 left-0 bottom-0 w-full">
       <div className="flex justify-start items-center gap-1">
         {[...Array(totalItems).keys()].map((dt, index) =>
           <div className={`cursor-pointer ${currentSlide !== index ? "bg-app-gray-10" : totalItems > 1 && "bg-app-primary-100"}`} onClick={() => dotHandler(index)} key={index}

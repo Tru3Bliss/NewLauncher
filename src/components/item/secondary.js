@@ -6,7 +6,7 @@ const SecondaryItem = (props) =>{
   const {className, item, mask} = props
   return(
     <div className='sec-item relative rounded-xl text-white min-h-sm flex' style={{backgroundImage:`url(${item.img})`}}>
-      <div className={`px-4 z-10 bg-gradient-to-r from-app-${mask} rounded-lg py-4 flex flex-1`}>
+      <div className={`px-4 bg-gradient-to-r from-app-${mask} rounded-lg py-4 flex flex-1`}>
         <div className='flex flex-col h-full justify-center '>
           <p className='text-sm xl:text-xl font-bold'>{item.name}</p>
           <p className='mt-2 text-xs xl:text-lg'>{item.description}</p>

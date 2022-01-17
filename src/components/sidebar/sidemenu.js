@@ -1,9 +1,5 @@
 export const SideMenu = [
   {
-    title:"Filter",
-    path:"/filter",
-  },
-  {
     title:"Downtown Core",
     path:"#",
   },
