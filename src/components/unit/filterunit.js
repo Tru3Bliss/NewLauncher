@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Accordion from '../../components/accordion';
 import { CheckBox, ModernInput, SearchInput } from '../../components/input';
 import { BadgeButton } from '../badge';
+import TreeCheck from '../item/tree';
 
 const FilterUnit = (props) => {
   const { option, filter, setFilter } = props
@@ -16,6 +17,7 @@ const FilterUnit = (props) => {
   let clearFlag = false
   const limit = option.max_limit
   const handleCheck = (checkedOption, check) => {
+    console.log("debug", checkedOption, check)
     if (check) {
       if (filter.filter(e => e.name === checkedOption.name).length === 0)
         setFilter(old => [...old, checkedOption])
@@ -35,13 +37,22 @@ const FilterUnit = (props) => {
   }
 
   useEffect(() => {
+    console.log(filter)
     if (!clearFlag) {
       setChecked([])
-      fullOptions.map((item) => {
+      option.type != 4 ? fullOptions.map((item) => {
         filter.map((filteredItem) => {
           if (item.name === filteredItem.name) {
             setChecked(old => [...old, filteredItem])
           }
+        })
+      }) : fullOptions.map((item) => {
+        item.district_name.split(", ").map((district, index) => {
+          filter.map((filteredItem) => {
+            if (district === filteredItem.name) {
+              setChecked(old => [...old, filteredItem])
+            }
+          })
         })
       })
     }
@@ -60,8 +71,6 @@ const FilterUnit = (props) => {
 
   useEffect(() => {
     setError(parseInt(min) > parseInt(max))
-    console.log("min", min)
-    console.log("max", max)
     if (min > 0 || max > 0) {
       setChecked([{
         name: option.name,
@@ -97,11 +106,21 @@ const FilterUnit = (props) => {
             </div>
           </div>
           <div className='flex flex-col gap-3 py-4'>
-            {option.options.map((option, idx) => (
+            {(option.type === 1 || option.type === 2) ? option.options.map((option, idx) => (
               <div className='flex gap-2 items-center' key={idx}>
                 <div className='px-0.6 items-center flex'>
                   <CheckBox label={option.name} onChange={handleCheck} option={option} checked={filter.filter(e => e.name === option.name).length > 0} />
                 </div>
+              </div>
+            )) : (option.type === 4) && option.options.map((item, idx) => (
+              <div className='flex gap-2 items-center' key={idx}>
+                <TreeCheck summary={<p>{item.region_name}</p>}>
+                  <div className='flex flex-col gap-3 py-4'>
+                    {item.district_name !== undefined && item.district_name.split(", ").map((district, index) => (
+                      <CheckBox label={district} onChange={handleCheck} option={{ name: district }} checked={filter.filter(e => e.name === district).length > 0} key={index} />
+                    ))}
+                  </div>
+                </TreeCheck>
               </div>
             ))}
           </div>
