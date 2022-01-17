@@ -86,12 +86,14 @@ module.exports = {
       2: "0.5rem",
       2.5: "0.625rem",
       3: "0.75rem",
+      3.4: "0.8rem",
       3.5: "0.875rem",
       3.6: "18px",
       4: "1rem",
       5: "1.25rem",
       5.5: "21px",
       6: "1.5rem",
+      6.5: "25px",
       7: "1.75rem",
       8: "2rem",
       9: "2.25rem",
@@ -104,6 +106,7 @@ module.exports = {
       14: "3.5rem",
       15: "3.875rem",
       16: "4rem",
+      16.5: "65px",
       17: '4.5rem',
       18: "4.875rem",
       19: "77px",
@@ -178,7 +181,7 @@ module.exports = {
       'lg': '1.125rem',
       'xl': '1.25rem',
       '2xl': '1.5rem',
-      '3xl': '1.875rem',
+      '3xl': ['2rem', "38.4px"],
       '4xl': '2.25rem',
       '5xl': '3rem',
       '6xl': '3.75rem',
@@ -203,6 +206,24 @@ module.exports = {
 
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
+    },
+    borderRadius: {
+      'none': '0',
+      sm: "4px",
+      md: "0.375rem",
+      lg: "0.5rem",
+      xl: "0.75rem",
+      "2xl": "1rem",
+      "3xl": "1.5rem",
+      "full": "99999px"
+    },
+    lineHeight: {
+      4.5: "1.05rem",
+      5: "1.225rem",
+      7: "1.8rem",
+      '11': '2.8rem',
+      '12': '3rem',
+      '13': '3.3rem'
     }
   },
   variants: {
