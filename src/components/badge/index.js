@@ -26,7 +26,7 @@ export const FilterBadge = (props) =>{
     remove()
   }
   return (
-    <div className={`rounded-full h-7 px-2 border  ${mode==="purple"?"text-app-primary-light border-app-primary-light bg-app-primary-60":"text-black border-app-gray-400"} bg-white flex items-center gap-1 ${className}`}>
+    <div className={`rounded-full h-7 px-2 border  ${mode==="purple"?"text-app-primary-light border-app-primary-light bg-app-primary-60":"text-black border-app-gray-400 bg-white"}  flex items-center gap-1 ${className}`}>
       <span className='text-sm'>{children}</span>
       <div onClick={handleClear}>
         <img src={mode==="purple"?roundedPurpleIcon:roundedDarkIcon} alt='close' />

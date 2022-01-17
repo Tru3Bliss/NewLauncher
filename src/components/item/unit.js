@@ -60,15 +60,19 @@ const UnitItem = (props) => {
         />}
     >
       {unit.unit_types.map((item, idx) => (
-        <div className="flex h-15 md:h-13 items-center px-5 justify-between text-xs" key={idx}>
-          <div className="flex md:flex-row flex-col gap-2 text-app-black-60 items-start md:items-center">
+        <div className="flex h-18 md:h-13 items-center px-3 md:px-5 justify-between text-xs pt-4" key={idx}>
+          <div className="flex md:flex-row flex-col gap-1 text-app-black-60 items-start md:items-center h-full">
             <p className="bg-app-gray-20  px-1 py-1 hidden md:flex">{unit.count_type}type{unit.count_type > 1 ? "s" : ""}</p>
-            <p className="text-sm text-app-black-100">{unit.unit_name}</p>
-            <p>{item.size_from}-{item.size_to} sqft</p>
+            <p className="text-sm text-app-black-100 leading-5">{unit.unit_name}</p>
+            <div className="flex items-center gap-1 leading-4.5">
+              <p className="bg-app-gray-20  px-1 py-1 md:hidden">{unit.count_type} type{unit.count_type > 1 ? "s" : ""}</p>
+              <p>{item.size_from}-{item.size_to} sqft</p>
+            </div>
           </div>
-          <div className="flex md:flex-row flex-col gap-2 items-end md:items-center">
-            <p className="text-app-black-60">${item.psf_from}-${item.psf_to} PSF</p>
-            <p className="text-sm text-app-black-100">{item.price_from > 1000000 ? "$" + item.price_from / 1000000 + "M" : item.price_from > 1000 ? "$" + item.price_from / 1000 + "K" : "$" + item.price_from} - {item.price_to > 1000000 ? "$" + item.price_to / 1000000 + "M" : item.price_to > 1000 ? "$" + item.price_to / 1000 + "K" : "$" + item.price_to}</p>
+          <div className="flex md:flex-row gap-1 items-end md:items-center h-full flex-col">
+            <p className="text-app-black-60 hidden md:block">${item.psf_from}-${item.psf_to} PSF</p>
+            <p className="text-sm text-app-black-100">{item.price_from > 1000000 ? "$" + item.price_from / 1000000 + "M" : item.price_from > 1000 ? "$" + item.price_from / 1000 + "K" : "$" + item.price_from}&nbsp;-&nbsp;{item.price_to > 1000000 ? "$" + item.price_to / 1000000 + "M" : item.price_to > 1000 ? "$" + item.price_to / 1000 + "K" : "$" + item.price_to}</p>
+            <p className="text-app-black-60 md:hidden">${item.psf_from}&nbsp;-&nbsp;${item.psf_to} PSF</p>
           </div>
         </div>
       ))}

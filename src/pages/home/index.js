@@ -766,15 +766,15 @@ const HomePage = () => {
           </div>
           <p className='text-app-gray-60 md:text-center text-xs md:text-base mt-4 w-10/12 md:w-full leading-4.5'>Accurately listed & constantly updated by each project's official sales team</p>
           <div className='flex items-center mx-auto justify-between md:justify-around mt-10 w-full lg:w-2/3 xl:w-1/2 py-6'>
-            <img src={ForbesIcon} alt='forbes' className='md:w-max' style={{width:"21%"}}/>
-            <img src={BloombergIcon} alt='bloomberg' className=' md:w-max' style={{width:"28.6%"}}/>
-            <img src={YahooIcon} alt='yahoo' className=' md:w-max' style={{width:"23%"}}/>
+            <img src={ForbesIcon} alt='forbes' className='md:w-max' style={{ width: "21%" }} />
+            <img src={BloombergIcon} alt='bloomberg' className=' md:w-max' style={{ width: "28.6%" }} />
+            <img src={YahooIcon} alt='yahoo' className=' md:w-max' style={{ width: "23%" }} />
           </div>
         </div>
-        <div className='flex flex-col gap-15 md:gap-45 mt-10'>
+        <div className='flex flex-col gap-24.5 md:gap-45 mt-10'>
 
           <div className='flex gap-15 '>
-            <div className='w-1/4 lg:flex flex-col hidden'>
+            <div className='lg:w-1/3 xl:w-1/4 lg:flex flex-col hidden'>
               <div className='h-15'>
                 <h2 className='text-2xl font-semibold'>Filter</h2>
               </div>
@@ -803,22 +803,22 @@ const HomePage = () => {
                 </div>
               </div>
             </div>
-            <div className='lg:w-1/2 w-full'>
+            <div className='lg:w-2/3 xl:w-1/2 w-full'>
               <div className='flex items-start md:items-center justify-between md:flex-row flex-col'>
                 <div className='flex flex-col gap-1'>
-                  <h2 className='text-2xl font-semibold'>Available New Launches</h2>
-                  {projects.length > 0 && <p className='text-app-black-80'>Showing 1 - {projects.length >= 10 ? 10 : projects.length} of {projects.length} available launches</p>}
+                  <h2 className='text-2xl font-semibold leading-5'>Available New Launches</h2>
+                  {projects.length > 0 && <p className='text-app-black-80 text-sm md:text-base mt-3'>Showing 1 - {projects.length >= 10 ? 10 : projects.length} of {projects.length} available launches</p>}
                 </div>
-                <div className='flex justify-between w-full md:max-w-190 mt-5'>
-                  <button href="/filter" className='md:hidden flex px-3 gap-2 rounded-md border items-center' onClick={handleFilter}>
+                <div className='flex justify-between w-full md:max-w-190 mt-5 gap-3'>
+                  <button className='md:hidden flex px-3 gap-2 rounded-md border items-center h-8.5 md:h-9  w-26 flex-shrink-0' onClick={handleFilter}>
                     <img src={FilterIcon} alt='filter' className='w-4 h-4' />
                     <p>Filter</p>
                     {filter.length > 0 && <div className='rounded-full w-3.6 h-3.6 items-center justify-center text-xs flex bg-app-primary-100 text-white flex-shrink-0'>
                       {filter.length}
                     </div>}
                   </button>
-                  {sortOptions.length > 0 && <Accordion summary={<div className='truncate'>{sortOptions[selectedOption].name}</div>} className="cursor-pointer max-w-190 w-full border rounded-md py-2 px-3 relative" autoclose={true} >
-                    <div className='absolute z-10 bg-white w-full left-0 transform translate-y-3 border rounded-md'>
+                  {sortOptions.length > 0 && <Accordion summary={<div className='truncate text-center'>{sortOptions[selectedOption].name}</div>} className="cursor-pointer w-full border rounded-md md:h-9 px-3 relative justify-center" autoclose={true} sort={true}>
+                    <div className='absolute z-10 bg-white w-full left-0 transform translate-y-3 md:translate-y-4 border rounded-md'>
                       {sortOptions.map((option, idx) => (
                         <div key={idx} className='text-sm py-2 w-full px-4 cursor-pointer hover:bg-app-primary-60 truncate' onClick={() => setSelectedOption(idx)}>{option.name}</div>
                       ))}
@@ -826,9 +826,9 @@ const HomePage = () => {
                   </Accordion>}
                 </div>
               </div>
-              <div className='mt-6'>
+              <div className=''>
                 {filter.length !== 0 &&
-                  <div className="pb-8">
+                  <div className="mt-4 border-y py-3 border-app-gray-20">
                     <div className='md:flex flex-wrap gap-1 hidden'>
                       {filter.map((item, idx) => (<FilterBadge key={idx} remove={() => handleRemove(item)} mode="purple">{item.name}</FilterBadge>))}
                       <button onClick={handleClear} className='text-app-primary-100 font-semibold text-sm px-2'>Clear All</button>
@@ -844,13 +844,13 @@ const HomePage = () => {
                     </div>
                   </div>}
               </div>
-              <div className='flex flex-col gap-6'>
+              <div className='flex flex-col gap-6 mt-5'>
                 {projects.map((project, idx) => (
                   <ProjectItem project={project} key={idx} />
                 ))}
               </div>
             </div>
-            <div className='md:w-1/2 lg:w-1/4 lg:flex hidden flex-col'>
+            <div className='md:w-1/2 lg:w-1/4 xl:flex hidden flex-col'>
               <div className='pb-2'>
                 <h2 className='text-2xl font-semibold'>Best Deals</h2>
                 <p className='text-app-gray-60'>Handpicked projects recommended for you.</p>
@@ -868,21 +868,21 @@ const HomePage = () => {
           </div>
 
           <div>
-            <H2>Trending New Launches</H2>
-            <div className='text-app-black-80 mt-4'>Based on units sold in Nov 21</div>
-            <div className='mt-10 overflow-x-auto relative'>
-              <div className='overflow-x-auto'>
+            <H2 className="leading-7">Trending New Launches</H2>
+            <div className='text-app-black-80 mt-3 leading-5 text-sm md:text-base md:mt-4'>Based on units sold in Nov 21</div>
+            <div className='mt-6 md:mt-10 overflow-x-auto relative'>
+              <div className='overflow-x-auto rounded-t-sm'>
                 <LaunchTable data={newLaunchData} />
               </div>
               <div className='w-15 bg-gradient-to-l from-white h-full md:hidden absolute right-0 top-0'></div>
             </div>
-            <p className='text-app-black-60 text-sm mt-9'>Source: Urban Redevelopment Authority (URA)</p>
+            <p className='text-app-black-60 text-xs md:text-sm mt-4 md:mt-9'>Source: Urban Redevelopment Authority (URA)</p>
           </div>
 
           <div>
             <H2>Developer Sales Volume</H2>
-            <div className='text-app-black-80 mt-4'>Based on sales from Nov 19 to Nov 21</div>
-            <div className='w-full flex justify-between items-center mt-10 flex-col tiny:flex-row gap-2 tiny:gap-0'>
+            <div className='hidden md:block text-app-black-80 mt-4'>Based on sales from Nov 19 to Nov 21</div>
+            <div className='w-full flex justify-between items-center mt-14 md:mt-10 flex-col tiny:flex-row gap-2 tiny:gap-0'>
               <Switch select={chatSelect} setSelect={setChatSelect} first="Property Type" second="Market Segment" className="w-full" />
               <div className='flex text-lg sm:gap-2 items-center'>
                 <img src={chatSelect ? IcArrowUp : IcArrowDown} />
@@ -896,13 +896,13 @@ const HomePage = () => {
               </div>
               <div className='w-15 bg-gradient-to-l from-white h-full md:hidden absolute right-0 top-0'></div>
             </div>
-            <p className='text-app-black-60 text-sm mt-9'>Source: Urban Redevelopment Authority (URA)</p>
+            <p className='text-app-black-60 text-xs md:text-sm mt-9'>Source: Urban Redevelopment Authority (URA)</p>
           </div>
 
           <div>
             <H2>New Launch Column</H2>
-            <div className='text-app-black-80 mt-4'>The ways people travel, work and live are blurring.</div>
-            <div className='mt-10 overflow-x-auto flex-col md:flex-row flex gap-10 pb-10'>
+            <div className='text-app-black-100 text-sm md:text-base  mt-3 md:mt-4 leading-5'>The ways people travel, work and live are blurring.</div>
+            <div className='mt-6 md:mt-10 overflow-x-auto flex-col md:flex-row flex gap-10 pb-10'>
               {launches.map((launch, idx) => (
                 <LaunchItem launch={launch} key={idx} />
               ))}
@@ -910,18 +910,16 @@ const HomePage = () => {
             <p className='text-app-black-80'>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
             <a href="#" className='md:text-lg font-semibold text-app-black-100 mt-4'>See all posts</a>
           </div>
-
-
           <div>
             <H2>Experince New Launches</H2>
             <div className='text-app-black-80 mt-4'>Product innovations, to Live Anywhere updates.</div>
-            <div className='mt-10 overflow-x-auto flex-col md:flex-row flex gap-10 pb-10'>
+            <div className='mt-10 overflow-x-auto flex-col md:flex-row flex gap-10 pb-6 md:pb-10'>
               {testimonials.map((client, idx) => (
                 <ClientItem client={client} key={idx} />
               ))}
             </div>
-            <p className='text-app-black-80'>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
-            <a href="#" className='md:text-lg font-semibold text-app-black-100 mt-4'>See all posts</a>
+            <p className='text-app-black-80 text-sm md:text-base leading-5'>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
+            <a href="#" className='md:text-lg font-semibold text-app-black-100 mt-3 md:mt-4'>See more experience launches</a>
           </div>
         </div>
       </div>

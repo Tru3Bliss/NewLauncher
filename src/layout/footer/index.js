@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="divide-y bg-white md:bg-app-primary-100 divide-app-gray-100 text-app-black-100 md:text-white justify-start flex flex-col w-full text-sm">
       <div className="flex flex-col md:hidden divide-y divide-app-gray-10">
-        <Accordion summary={<div className="h-12.6 items-center flex font-semibold">About</div>} className="bg-app-primary-100" mode="white">
+        <Accordion summary={<div className="h-12.6 items-center flex font-semibold text-base">About</div>} className="bg-app-primary-100" mode="white">
           <div className="flex flex-col gap-4 pb-4">
             <a href='#'>Our Company</a>
             <a href='#'>Meet the Team</a>
@@ -14,35 +14,35 @@ const Footer = () => {
             <a href='#'>HQ Address</a>
           </div>
         </Accordion>
-        <Accordion summary={<div className="h-12.6 items-center flex font-semibold">Help</div>} className="bg-app-primary-100" mode="white">
+        <Accordion summary={<div className="h-12.6 items-center flex font-semibold text-base">Help</div>} className="bg-app-primary-100" mode="white">
           <div className="flex flex-col gap-4 pb-4">
             <a href='#'>Frequently Asked Question</a>
             <a href='#'>Call Center</a>
             <a href='#'>Disclaimer</a>
           </div>
         </Accordion>
-        <Accordion summary={<div className="h-12.6 items-center flex font-semibold">Popular</div>} className="bg-app-primary-100" mode="white">
+        <Accordion summary={<div className="h-12.6 items-center flex font-semibold text-base">Popular</div>} className="bg-app-primary-100" mode="white">
           <div className="flex flex-col gap-4 pb-4">
             <a href='#'>Apartment in OCR</a>
             <a href='#'>Apartment in RCR</a>
             <a href='#'>Apartment in CCR</a>
           </div>
         </Accordion>
-        <Accordion summary={<div className="h-12.6 items-center flex font-semibold">Blog</div>} className="bg-app-primary-100" mode="white">
+        <Accordion summary={<div className="h-12.6 items-center flex font-semibold text-base">Blog</div>} className="bg-app-primary-100" mode="white">
           <div className="flex flex-col gap-4 pb-4">
             <a href='#'>Most Viewed</a>
             <a href='#'>Rent an Proper Apartment</a>
             <a href='#'>Tips & Trick</a>
           </div>
         </Accordion>
-        <Accordion summary={<div className="h-12.6 items-center flex font-semibold">Resources</div>} className="bg-app-primary-100" mode="white">
+        <Accordion summary={<div className="h-12.6 items-center flex font-semibold text-base">Resources</div>} className="bg-app-primary-100" mode="white">
           <div className="flex flex-col gap-4 pb-4">
             <a href='#'>Styleguide</a>
             <a href='#'>Call Center</a>
             <a href='#'>Disclaimer</a>
           </div>
         </Accordion>
-        <Accordion summary={<div className="h-12.6 items-center flex font-semibold">Follow Us</div>} className="bg-app-primary-100" mode="white">
+        <Accordion summary={<div className="h-12.6 items-center flex font-semibold text-base">Follow Us</div>} className="bg-app-primary-100" mode="white">
           <div className="flex flex-col gap-4 pb-4">
             <a href='#'>Instagram</a>
             <a href='#'>Twitter</a>
@@ -50,14 +50,14 @@ const Footer = () => {
           </div>
         </Accordion>
       </div>
-      <div className='w-full px-4 py-10 sm:p-10 md:p-20 grid grid-cols-1 md:grid-cols-2'>
+      <div className='w-full px-4 pt-10 pb-6 md:pb-10 sm:p-10 md:p-20 grid grid-cols-1 md:grid-cols-2'>
         <div className='flex justify-between'>
-          <div className='w-full md:w-1/2 gap-6 flex flex-col'>
+          <div className='w-full md:w-1/2 flex flex-col leading-5'>
             <img src={whiteLogo} alt="logo" className="max-w-5 md:block hidden" />
             <img src={Logo} alt="logo" className="max-w-5 md:hidden" />
-            <p>New Launcher is Singapore’s fastest growing property portal. With us, you’ll feel right at home when searching for houses, condominiums, apartments and HDBs for sales & rent in Singapore.</p>
-            <p>Check out our handy guide to find the best location for your lifestyle and the unending adventures each neighbourhood in Singapore.</p>
-            <p>This will help us quickly identify you and get you the right kind of help on contact@newlauncher.com</p>
+            <p className="mt-6">New Launcher is Singapore’s fastest growing property portal. With us, you’ll feel right at home when searching for houses, condominiums, apartments and HDBs for sales & rent in Singapore.</p>
+            <p className="mt-5">Check out our handy guide to find the best location for your lifestyle and the unending adventures each neighbourhood in Singapore.</p>
+            <p className="mt-5">This will help us quickly identify you and get you the right kind of help on contact@newlauncher.com</p>
             <p className="mt-12">Ⓒ2021 NEWLAUNCHER.com.sg. All Rights Reserved.</p>
           </div>
           <div className='flex-col w-1/3 gap-10 hidden md:flex'>
