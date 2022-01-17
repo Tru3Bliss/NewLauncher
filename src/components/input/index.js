@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import searchIcon from "../../assets/icons/ic_search.svg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import "./input.scss"
 export const SearchInput = (props) => {
   const { keyword, setKeyword, placeholder } = props
   return (
@@ -33,3 +34,25 @@ export const CheckBox = (props) => {
     </div>
   )
 }
+
+
+export const ModernInput = (props) => {
+  const { className, label, value, setValue, limit, error } = props
+  const [focus, setFocus] = useState(false)
+  const [placefolder, setPlaceFolder] = useState(label)
+  useEffect(() => {
+    setPlaceFolder(focus ? "" : label)
+  }, [focus])
+  const handleChange = (e) =>{
+    if(e.target.value < limit){
+      setValue(e.target.value)
+    }
+  }
+  console.log(error)
+  return (
+    <div className={`${error ? "border-app-red " : focus ? "border-app-primary-100" : ""} border relative rounded-sm px-3 h-10 modern-input`}>
+      {(value !== undefined && value.length !== 0 || focus) && <p className={`text-xxs bg-white transform absolute left-1 px-1 top-0 -translate-y-2/3 leading-1 ${error ? "text-app-red " : focus ? "text-app-primary-100" : ""} `}>{label}</p>}
+      <input value={value} className="h-full leading-5 w-full outline-none text-sm" onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} placeholder={placefolder} type="number" onChange={handleChange} />
+    </div>)
+}
+

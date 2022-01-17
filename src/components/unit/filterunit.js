@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Accordion from '../../components/accordion';
-import { CheckBox, SearchInput } from '../../components/input';
+import { CheckBox, ModernInput, SearchInput } from '../../components/input';
 import { BadgeButton } from '../badge';
 
 const FilterUnit = (props) => {
@@ -10,10 +10,14 @@ const FilterUnit = (props) => {
   const [filtered, setFiltered] = useState([])
   const [checked, setChecked] = useState([])
   const [expand, setExpand] = useState(false)
+  const [min, setMin] = useState()
+  const [max, setMax] = useState()
+  const [error, setError] = useState(false)
   let clearFlag = false
+  const limit = option.max_limit
   const handleCheck = (checkedOption, check) => {
     if (check) {
-      if (filter.filter(e => e.id === checkedOption.id).length === 0)
+      if (filter.filter(e => e.name === checkedOption.name).length === 0)
         setFilter(old => [...old, checkedOption])
     }
     else {
@@ -26,6 +30,8 @@ const FilterUnit = (props) => {
     setFilter(filter.filter(e => checked.filter(item => item === e).length === 0))
     setChecked([])
     clearFlag = false
+    setMin("")
+    setMax("")
   }
 
   useEffect(() => {
@@ -33,7 +39,7 @@ const FilterUnit = (props) => {
       setChecked([])
       fullOptions.map((item) => {
         filter.map((filteredItem) => {
-          if (item.id === filteredItem.id) {
+          if (item.name === filteredItem.name) {
             setChecked(old => [...old, filteredItem])
           }
         })
@@ -52,6 +58,19 @@ const FilterUnit = (props) => {
     }
   }, [keyword])
 
+  useEffect(() => {
+    setError(parseInt(min) > parseInt(max))
+    console.log("min", min)
+    console.log("max", max)
+    if (min > 0 || max > 0) {
+      setChecked([{
+        name: option.name,
+        min: min,
+        max: max
+      }
+      ])
+    }
+  }, [min, max])
 
   return (
     <Accordion summary={
@@ -63,15 +82,15 @@ const FilterUnit = (props) => {
         <p className={`whitespace-nowrap overflow-hidden truncate text-sm text-app-gray-600 md:hidden ${checked.length === 0 && "hidden"}`}>{checked.map((item) => (item.name) + ", ")}</p>
       </div>} className="" subClassname={checked.length > 0 ? "h-19" : "h-12.6"} expand={expand} setExpand={setExpand}>
       <div className='flex flex-col gap-3'>
-        <SearchInput placeholder={`Search ${option.name}`} keyword={keyword} setKeyword={setKeyword} />
-        <div className='flex flex-col divide-y divide-app-gray-100'>
+        {(option.type === 1 || option.type === 4) && <SearchInput placeholder={`Search ${option.name}`} keyword={keyword} setKeyword={setKeyword} />}
+        {option.type !== 3 && <div className='flex flex-col divide-y divide-app-gray-100'>
           <div>
             <label className='text-xs'>{filtered.length > 0 ? filtered.length : "No"} project{filtered.length > 1 && "s"} found</label>
             <div className='flex flex-col gap-3 pt-2 pb-4'>
               {filtered.map((option, idx) => (
                 <div className='flex gap-2 items-center' key={idx}>
                   <div className='px-0.6 items-center flex'>
-                    <CheckBox label={option.name} onChange={handleCheck} option={option} checked={filter.filter(e => e.id === option.id).length > 0} />
+                    <CheckBox label={option.name} onChange={handleCheck} option={option} checked={filter.filter(e => e.name === option.name).length > 0} />
                   </div>
                 </div>
               ))}
@@ -81,12 +100,23 @@ const FilterUnit = (props) => {
             {option.options.map((option, idx) => (
               <div className='flex gap-2 items-center' key={idx}>
                 <div className='px-0.6 items-center flex'>
-                  <CheckBox label={option.name} onChange={handleCheck} option={option} checked={filter.filter(e => e.id === option.id).length > 0} />
+                  <CheckBox label={option.name} onChange={handleCheck} option={option} checked={filter.filter(e => e.name === option.name).length > 0} />
                 </div>
               </div>
             ))}
           </div>
-        </div>
+        </div>}
+        {
+          option.type === 3 &&
+          <div className='flex flex-col'>
+            <div className='flex justify-between items-center gap-1 py-4'>
+              <ModernInput label={"min." + option.name.split(" ")[option.name.split(" ").length - 1]} value={min} setValue={setMin} error={error} limit={limit} />
+              <p className='text-4xl leading-1'>-</p>
+              <ModernInput label={"max." + option.name.split(" ")[option.name.split(" ").length - 1]} value={max} setValue={setMax} error={error} limit={limit} />
+            </div>
+            {error && <p className='text-app-red text-xs pb-4'>Min value can't more than max value</p>}
+          </div>
+        }
       </div>
     </Accordion>
   )

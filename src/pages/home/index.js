@@ -778,7 +778,7 @@ const HomePage = () => {
               <div className='h-15'>
                 <h2 className='text-2xl font-semibold'>Filter</h2>
               </div>
-              <div className='overflow-y-auto text-app-black-100'>
+              <div className='text-app-black-100'>
                 <div className='flex flex-col divide-y divide-app-gray-30'>
                   <div className='lg:hidden flex'>
                     {filter.length !== 0 &&
