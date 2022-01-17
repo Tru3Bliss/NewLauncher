@@ -17,7 +17,6 @@ const FilterUnit = (props) => {
   let clearFlag = false
   const limit = option.max_limit
   const handleCheck = (checkedOption, check) => {
-    console.log("debug", checkedOption, check)
     if (check) {
       if (filter.filter(e => e.name === checkedOption.name).length === 0)
         setFilter(old => [...old, checkedOption])
@@ -37,7 +36,6 @@ const FilterUnit = (props) => {
   }
 
   useEffect(() => {
-    console.log(filter)
     if (!clearFlag) {
       setChecked([])
       option.type != 4 ? fullOptions.map((item) => {

@@ -11,7 +11,6 @@ const ProjectItem = (props) => {
   const [loadstatus, setLoadStatus] = useState(0)
   const [devLoadStatus, setDevLoadStatus] = useState(0)
   const [projectImg, setProjectImg] = useState(project.project_image_path)
-  console.log(project.launch_date)
   const upcomming = moment(project.launch_date, "YYYY-MM-DD").fromNow().includes("in")
   return (
     <div className="flex flex-col rounded-lg shadow-md divide-y divide-app-gray-20">

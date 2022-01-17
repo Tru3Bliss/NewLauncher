@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { H1, H2, Title } from '../../components/label'
@@ -38,7 +38,7 @@ import LaunchItem from '../../components/item/launch'
 import ApexChart from '../../components/chart';
 import Switch from '../../components/switch'
 
-const HomePage = () => {
+const SearchPage = (props) => {
   const location = useLocation()
 
   const [newLaunchers, setNetLaunchers] = useState(145)
@@ -713,65 +713,20 @@ const HomePage = () => {
     //   console.log(response.data)
     // })
 
-    // axios.post(BASE_API_URL + "herosection").then((response) => {
-    //   setNetLaunchers(response.data[0].count_project)
-    //   setUnitTypes(response.data[0].count_unittype)
-    //   setFloorPlans(response.data[0].count_floorplans)
-    // }).catch((response) => {
-    //   console.log(response.data)
-    // })
-
-    axios.post(BASE_API_URL + "testimonials").then((response) => {
-      setTestimonials(response.data)
-    }).catch((response) => {
-      console.log(response.data)
-    })
-
     axios.post(BASE_API_URL + "sortsandfilters").then((response) => {
       setSortOptions(response.data[0].options)
       setFilterOptions(response.data)
     }).catch((response) => {
       console.log(response.data)
     })
-
     if (location.state?.filter)
       setFilter(location.state?.filter)
   }, [])
 
-
   return (
     <Layout>
       <div className='px-4 md:px-20 flex flex-col pb-10 md:pb-20 '>
-        <div className='flex flex-col md:gap-9 md:items-center md:justify-center pt-8 md:py-24'>
-          <div >
-            <div className='flex flex-col'>
-              <H1 className="font-bold text-start md:text-center">Reliably Explore</H1>
-              <Title className="md:text-center leading-13">New Launch Properties</Title>
-            </div>
-          </div>
-          <div className='mt-3 md:mt-0 gap-9 flex md:w-1/2 xl:w-1/3  md:mx-auto whitespace-nowrap'>
-            <div className='flex flex-col items-start md:items-center justify-center md:w-1/3'>
-              <span className='text-app-primary-100 font-bold text-2xl lg:text-3xl xl:text-5xl text-left leading-7'>{newLaunchers}</span>
-              <p className='text-sm md:text-lg lg:text-xl mt-1 leading-5'>New Launches</p>
-            </div>
-            <div className='flex flex-col items-start md:items-center justify-center md:w-1/3'>
-              <span className='text-app-primary-100 font-bold text-2xl lg:text-3xl xl:text-5xl text-left leading-7'>{unitTypes}</span>
-              <p className='text-sm md:text-lg lg:text-xl mt-1 leading-5'>Unit Types</p>
-            </div>
-            <div className='flex flex-col items-start md:items-center justify-center md:w-1/3'>
-              <span className='text-app-primary-100 font-bold text-2xl lg:text-3xl xl:text-5xl text-left leading-7'>{floorPlans}</span>
-              <p className='text-sm md:text-lg lg:text-xl mt-1 leading-5'>Floor Plans</p>
-            </div>
-          </div>
-          <p className='text-app-gray-60 md:text-center text-xs md:text-base mt-4 w-10/12 md:w-full leading-4.5'>Accurately listed & constantly updated by each project's official sales team</p>
-          <div className='flex items-center mx-auto justify-between md:justify-around mt-10 w-full lg:w-2/3 xl:w-1/2 py-6'>
-            <img src={ForbesIcon} alt='forbes' className='md:w-max' style={{ width: "21%" }} />
-            <img src={BloombergIcon} alt='bloomberg' className=' md:w-max' style={{ width: "28.6%" }} />
-            <img src={YahooIcon} alt='yahoo' className=' md:w-max' style={{ width: "23%" }} />
-          </div>
-        </div>
         <div className='flex flex-col gap-24.5 md:gap-45 mt-10'>
-
           <div className='flex gap-15 '>
             <div className='lg:w-1/3 xl:w-1/4 lg:flex flex-col hidden'>
               <div className='h-15'>
@@ -865,66 +820,10 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-
-          <div>
-            <H2 className="leading-7">Trending New Launches</H2>
-            <div className='text-app-black-80 mt-3 leading-5 text-sm md:text-base md:mt-4'>Based on units sold in Nov 21</div>
-            <div className='mt-6 md:mt-10 overflow-x-auto relative'>
-              <div className='overflow-x-auto rounded-t-sm'>
-                <LaunchTable data={newLaunchData} />
-              </div>
-              <div className='w-15 bg-gradient-to-l from-white h-full md:hidden absolute right-0 top-0'></div>
-            </div>
-            <p className='text-app-black-60 text-xs md:text-sm mt-4 md:mt-9'>Source: Urban Redevelopment Authority (URA)</p>
-          </div>
-
-          <div>
-            <H2>Developer Sales Volume</H2>
-            <div className='hidden md:block text-app-black-80 mt-4'>Based on sales from Nov 19 to Nov 21</div>
-            <div className='w-full flex justify-between items-center mt-14 md:mt-10 flex-col tiny:flex-row gap-2 tiny:gap-0'>
-              <Switch select={chatSelect} setSelect={setChatSelect} first="Property Type" second="Market Segment" className="w-full" />
-              <div className='flex text-lg sm:gap-2 items-center'>
-                <img src={chatSelect ? IcArrowUp : IcArrowDown} />
-                <p className={`${chatSelect ? "text-app-green-dark" : "text-app-red"} text-sm sm:text-base font-semibold`}>2.1%</p>
-                <p className='text-xs sm:text-sm'>&nbsp; vs last month</p>
-              </div>
-            </div>
-            <div className='mt-10 relative'>
-              <div className='overflow-x-auto '>
-                <ApexChart data={chatSelect ? salesData[0] : salesData[1]} />
-              </div>
-              <div className='w-15 bg-gradient-to-l from-white h-full md:hidden absolute right-0 top-0'></div>
-            </div>
-            <p className='text-app-black-60 text-xs md:text-sm mt-9'>Source: Urban Redevelopment Authority (URA)</p>
-          </div>
-
-          <div>
-            <H2>New Launch Column</H2>
-            <div className='text-app-black-100 text-sm md:text-base  mt-3 md:mt-4 leading-5'>The ways people travel, work and live are blurring.</div>
-            <div className='mt-6 md:mt-10 overflow-x-auto flex-col md:flex-row flex gap-10 pb-10'>
-              {launches.map((launch, idx) => (
-                <LaunchItem launch={launch} key={idx} />
-              ))}
-            </div>
-            <p className='text-app-black-80'>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
-            <a href="#" className='md:text-lg font-semibold text-app-black-100 mt-4'>See all posts</a>
-          </div>
-          <div>
-            <H2>Experince New Launches</H2>
-            <div className='text-app-black-80 mt-4'>Product innovations, to Live Anywhere updates.</div>
-            <div className='mt-10 overflow-x-auto flex-col md:flex-row flex gap-10 pb-6 md:pb-10'>
-              {testimonials.map((client, idx) => (
-                <ClientItem client={client} key={idx} />
-              ))}
-            </div>
-            <p className='text-app-black-80 text-sm md:text-base leading-5'>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
-            <a href="#" className='md:text-lg font-semibold text-app-black-100 mt-3 md:mt-4'>See more experience launches</a>
-          </div>
         </div>
       </div>
     </Layout>
   )
 }
 
-export default HomePage;
-
+export default SearchPage
