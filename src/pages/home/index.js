@@ -738,9 +738,9 @@ const HomePage = () => {
       setFilter(location.state?.filter)
   }, [])
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(filter)
-  },[filter])
+  }, [filter])
 
   return (
     <Layout>
@@ -898,33 +898,43 @@ const HomePage = () => {
               </div>
               <div className='w-15 bg-gradient-to-l from-white h-full md:hidden absolute right-0 top-0'></div>
             </div>
-            <p className='text-app-black-60 text-xs md:text-sm mt-9'>Source: Urban Redevelopment Authority (URA)</p>
+            <p className='px-4 text-app-black-60 text-xs md:text-sm mt-9'>Source: Urban Redevelopment Authority (URA)</p>
           </div>
-
-          <div>
+        </div>
+      </div>
+      <div className='gap-24.5 md:gap-45 flex flex-col mt-14.5'>
+        <div>
+          <div className='flex flex-col mx-4 md:px-20'>
             <H2>New Launch Column</H2>
             <div className='text-app-black-100 text-sm md:text-base  mt-3 md:mt-4 leading-5'>The ways people travel, work and live are blurring.</div>
-            <div className='mt-6 md:mt-10 overflow-x-auto flex-col md:flex-row flex gap-10 pb-10'>
-              {launches.map((launch, idx) => (
-                <LaunchItem launch={launch} key={idx} />
-              ))}
-            </div>
+          </div>
+          <div className='mt-6 md:mt-10 overflow-x-auto flex-col md:flex-row flex gap-10 md:pb-10 pb-6 md:px-20'>
+            {launches.map((launch, idx) => (
+              <LaunchItem launch={launch} key={idx} />
+            ))}
+          </div>
+          <div className='flex flex-col mx-4 md:px-20'>
             <p className='text-app-black-80'>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
             <a href="#" className='md:text-lg font-semibold text-app-black-100 mt-4'>See all posts</a>
           </div>
-          <div>
+        </div>
+        <div className='mt-'>
+          <div className='flex flex-col px-4 md:px-20'>
             <H2>Experince New Launches</H2>
             <div className='text-app-black-80 mt-4'>Product innovations, to Live Anywhere updates.</div>
-            <div className='mt-10 overflow-x-auto flex-col md:flex-row flex gap-10 pb-6 md:pb-10'>
-              {testimonials.map((client, idx) => (
-                <ClientItem client={client} key={idx} />
-              ))}
-            </div>
+          </div>
+          <div className='mt-6 md:mt-10 overflow-x-auto flex-col md:flex-row flex gap-10 pb-6 md:pb-10 md:px-20'>
+            {testimonials.map((client, idx) => (
+              <ClientItem client={client} key={idx} />
+            ))}
+          </div>
+          <div className='flex flex-col px-4 md:px-20 pb-10 md:pb-20'>
             <p className='text-app-black-80 text-sm md:text-base leading-5'>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
             <a href="#" className='md:text-lg font-semibold text-app-black-100 mt-3 md:mt-4'>See more experience launches</a>
           </div>
         </div>
       </div>
+
     </Layout>
   )
 }

@@ -13,7 +13,7 @@ const ProjectItem = (props) => {
   const [projectImg, setProjectImg] = useState(project.project_image_path)
   const upcomming = moment(project.launch_date, "YYYY-MM-DD").fromNow().includes("in")
   return (
-    <div className="flex flex-col rounded-lg shadow-md divide-y divide-app-gray-20">
+    <div className="flex flex-col rounded-lg shadow-[1px_2px_16px_rgb(0,0,0,0.14)] shadow-app-gray-30 divide-y divide-app-gray-20">
       <div className="flex flex-col md:flex-row">
         <div className="md:h-46 w-full md:w-60 relative text-white">
           {loadstatus === 2 ? <img src={DummyImg} alt={project.project_image_alt} className="md:h-46 w-full md:w-60 rounded-t-lg rounded-r-none" />
